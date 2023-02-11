@@ -2,7 +2,7 @@
  * speak
  *
  * @param cwd - the pkg path
- * @returns result - WorkspaceRootResult | null
+ * @returns result - null
  */
 async function speak(cwd: string): Promise<unknown | null> {
 	//

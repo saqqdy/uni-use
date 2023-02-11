@@ -18,27 +18,25 @@ Some simple utilities for nodejs
 
 ## Install
 
-e.g: use `workspace-root`
+e.g: use `@uni-use/speak`
 
 ```shell
 # by pnpm
-pnpm install workspace-root
+pnpm install @uni-use/speak
 
 # by npm
-npm install -D workspace-root
+npm install -D @uni-use/speak
 
 # by yarn
-yarn add workspace-root
+yarn add @uni-use/speak
 ```
 
 ## Usage
 
 ```js
-import { workspaceRoot } from 'workspace-root'
+import { speak } from '@uni-use/speak'
 
-workspaceRoot().then(path => {
-  console.log('The workspace root is: ', path) // /Users/user/path/of/package/root or null
-})
+speak('Hello World!')
 ```
 
 ## Issues & Support
