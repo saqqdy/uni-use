@@ -2,7 +2,7 @@ import { readFileSync } from 'fs'
 import type { Plugin } from 'rollup'
 
 const injectUniUseUtils: Plugin = {
-	name: 'inject-uni-use-utils',
+	name: 'inject-iife-utils',
 	renderChunk(code) {
 		const INJECT_IIFE = readFileSync(
 			require.resolve('@uni-use/utils/lib/index.iife.js'),
