@@ -14,7 +14,7 @@ Some simple utilities for nodejs
 
 ## Function list
 
-- use speech: [what-pm](https://github.com/saqqdy/uni-use/tree/master/packages/speak)
+- use speak: [@uni-use/speak](https://github.com/saqqdy/uni-use/tree/master/packages/speak)
 
 ## Install
 
