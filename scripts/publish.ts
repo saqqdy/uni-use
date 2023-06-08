@@ -5,11 +5,11 @@ import { readJSONSync, writeJSONSync } from '@node-kit/extra.fs'
 import { version } from '../package.json'
 import { packages } from '../build/packages'
 
+const [, , ...args] = process.argv
+const IS_TEST = args.includes('--test')
 export const ROOT = join(__dirname, '..')
 export const PACKAGE = join(ROOT, 'packages')
 
-const [, , ...args] = process.argv
-const IS_TEST = args.includes('--test')
 const REGISTRY_URL = 'https://registry.npmjs.org'
 let command = `npm --registry=${REGISTRY_URL} publish --access public`
 
@@ -25,16 +25,25 @@ for (const { name, pkgName } of packages) {
 	const dirName = name.replace(/\./g, sep)
 	const cwd = name === 'monorepo' ? ROOT : join(PACKAGE, dirName)
 	const PKG_FILE = join(cwd, 'package.json')
-	const pkgJson = readJSONSync(PKG_FILE)
+	const pkgJson = readJSONSync(PKG_FILE)!
 	const newPkgJson = JSON.parse(JSON.stringify(pkgJson))
 	for (const { pkgName: pkg } of packages) {
-		if (pkg in ((newPkgJson.dependencies as Record<string, unknown>) || {})) {
+		if (
+			pkg in ((newPkgJson.dependencies as Record<string, unknown>) || {}) &&
+			newPkgJson.dependencies[pkg].includes('workspace')
+		) {
 			newPkgJson.dependencies[pkg] = version
 		}
-		if (pkg in ((newPkgJson.devDependencies as Record<string, unknown>) || {})) {
+		if (
+			pkg in ((newPkgJson.devDependencies as Record<string, unknown>) || {}) &&
+			newPkgJson.devDependencies[pkg].includes('workspace')
+		) {
 			newPkgJson.devDependencies[pkg] = version
 		}
-		if (pkg in ((newPkgJson.peerDependencies as Record<string, unknown>) || {})) {
+		if (
+			pkg in ((newPkgJson.peerDependencies as Record<string, unknown>) || {}) &&
+			newPkgJson.peerDependencies[pkg].includes('workspace')
+		) {
 			newPkgJson.peerDependencies[pkg] = version
 		}
 	}
@@ -45,7 +54,7 @@ for (const { name, pkgName } of packages) {
 		stdio: 'inherit',
 		cwd
 	})
-	writeJSONSync(PKG_FILE, pkgJson!, {
+	writeJSONSync(PKG_FILE, pkgJson, {
 		encoding: 'utf8'
 	})
 	execSync(`npx prettier --write ${PKG_FILE}`, {

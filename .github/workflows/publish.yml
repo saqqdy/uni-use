@@ -1,4 +1,4 @@
-name: Npm publish
+name: npm-publish
 
 on:
   release:
@@ -19,7 +19,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7.26.1
+          version: 8.6.0
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -28,6 +28,9 @@ jobs:
           registry-url: https://registry.npmmirror.com
           cache: pnpm
 
+      - run: echo ${{ matrix.node-version }}
+      - run: npm -v
+      - run: pnpm store path
       - run: pnpm install
 
       # - run: npx changelogithub --no-group
@@ -42,13 +45,11 @@ jobs:
       - name: Gen .npmrc
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./.npmrc
 
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/utils/.npmrc
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/speak/.npmrc
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/use-downloads/.npmrc
 
       - run: pnpm pub
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@uni-use/monorepo/sync"
-      - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@uni-use/utils/sync"
-      - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@uni-use/speak/sync"
+      - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/use-downloads/sync"

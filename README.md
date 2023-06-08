@@ -2,7 +2,7 @@
 
 # @uni-use/monorepo
 
-Some simple utilities for nodejs
+Collection of common composition apis for vue2 & vue3
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]
@@ -14,29 +14,48 @@ Some simple utilities for nodejs
 
 ## Function list
 
-- use speak: [@uni-use/speak](https://github.com/saqqdy/uni-use/tree/master/packages/speak)
+- A js utilities that contains all the methods for downloading files: [use-downloads](https://github.com/saqqdy/uni-use/tree/master/packages/use-downloads)
 
 ## Install
 
-e.g: use `@uni-use/speak`
+e.g: use `use-downloads`
 
 ```shell
 # by pnpm
-pnpm install @uni-use/speak
+pnpm install use-downloads
 
 # by npm
-npm install -D @uni-use/speak
+npm install -D use-downloads
 
 # by yarn
-yarn add @uni-use/speak
+yarn add use-downloads
 ```
 
 ## Usage
 
-```js
-import { speak } from '@uni-use/speak'
+### General use
 
-speak('Hello World!')
+```js
+import useDownloads from 'use-downloads'
+const { download } = useDownloads()
+
+download('url', options)
+```
+
+2. by require
+
+```js
+const useDownloads = require('use-downloads')
+const { download } = useDownloads()
+
+download('url', options)
+```
+
+### Use CDN resource
+
+```html
+<!-- head -->
+<script src="https://unpkg.com/use-downloads@1.2.0/dist/index.global.prod.js"></script>
 ```
 
 ## Issues & Support

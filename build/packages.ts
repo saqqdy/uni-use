@@ -2,22 +2,15 @@ import type { PackageManifest } from './types'
 
 export const packages: PackageManifest[] = [
 	{
+		name: 'use-downloads',
+		pkgName: 'use-downloads',
+		iifeName: 'useDownloads',
+		display: 'A js utilities that contains all the methods for downloading files'
+	},
+	{
 		name: 'monorepo',
 		pkgName: '@uni-use/monorepo',
 		build: false,
-		display: 'Some simple utilities for nodejs'
-	},
-	{
-		name: 'utils',
-		pkgName: '@uni-use/utils',
-		iife: false,
-		submodules: true,
-		display: 'Some shared utilities'
-	},
-	{
-		name: 'speak',
-		pkgName: '@uni-use/speak',
-		iife: true,
-		display: 'A simple utility to get the package manager information which used in the project'
+		display: 'Collection of common composition apis for vue2 & vue3'
 	}
 ]

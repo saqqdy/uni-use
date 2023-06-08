@@ -1,15 +1,15 @@
-import { readFileSync } from 'fs'
+import injectCode, { type Options } from 'rollup-plugin-inject-code'
 import type { Plugin } from 'rollup'
 
-const injectUniUseUtils: Plugin = {
-	name: 'inject-iife-utils',
-	renderChunk(code) {
-		const INJECT_IIFE = readFileSync(
-			require.resolve('@uni-use/utils/lib/index.iife.js'),
-			'utf-8'
+const injectEslintSetsCore = (options: Options): Plugin =>
+	injectCode(
+		Object.assign(
+			{
+				code: '',
+				position: 'before'
+			},
+			options
 		)
-		return `${INJECT_IIFE};\n;${code}`
-	}
-}
+	)
 
-export default injectUniUseUtils
+export default injectEslintSetsCore
