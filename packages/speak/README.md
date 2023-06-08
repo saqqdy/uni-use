@@ -108,7 +108,7 @@ export default {
 ### Using unpkg CDN
 
 ```html
-<!-- Add script tags to your html code, using CDN links to bring in -->
+<script src="https://unpkg.com/vue-demi@latest/lib/index.iife.js"></script>
 <script src="https://unpkg.com/use-speak@1.1.0/dist/index.global.prod.js"></script>
 ```
 

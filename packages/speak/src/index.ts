@@ -1,6 +1,7 @@
 import { ref, shallowRef, watch } from 'vue-demi'
 import type { Ref, ShallowRef } from 'vue-demi'
-import { inBrowser, isChrome } from './utils'
+import { inBrowser } from 'js-cool'
+import { isChrome } from './utils'
 
 export interface SpeechOptions {
 	preferTouchEvent: boolean

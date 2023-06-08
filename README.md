@@ -58,7 +58,7 @@ download('url', options)
 
 ```html
 <!-- head -->
-<script src="https://unpkg.com/use-downloads@1.2.0/dist/index.global.prod.js"></script>
+<script src="https://unpkg.com/use-downloads@1.3.0/dist/index.global.prod.js"></script>
 ```
 
 ## Issues & Support
