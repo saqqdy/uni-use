@@ -1,7 +1,7 @@
 {
 	"name": "@uni-use/monorepo",
 	"description": "Collection of common composition apis for vue2 & vue3",
-	"version": "1.0.0-beta.1",
+	"version": "1.3.0-beta.1",
 	"packageManager": "pnpm@8.6.0",
 	"main": "index.js",
 	"files": [
@@ -44,6 +44,7 @@
 		"@rollup/plugin-replace": "^5.0.2",
 		"@rollup/plugin-terser": "^0.4.3",
 		"@rollup/plugin-typescript": "^11.1.1",
+		"@types/activex-excel": "^14.0.6",
 		"@types/inquirer": "^9.0.3",
 		"@types/jest": "^29.5.2",
 		"@types/node": "^20.2.5",
@@ -98,7 +99,7 @@
 	"author": "saqqdy.com",
 	"homepage": "https://github.com/saqqdy/uni-use#readme",
 	"bugs": {
-		"url": "https://github.com/saqqdy/uni-usesues"
+		"url": "https://github.com/saqqdy/uni-use/issues"
 	},
 	"repository": {
 		"type": "git",

@@ -1,0 +1,87 @@
+{
+	"name": "use-speak",
+	"description": "A composition api for SpeechSynthesis, supports vue2.0 and vue3.0",
+	"version": "1.2.0",
+	"packageManager": "pnpm@8.6.0",
+	"main": "dist/index.cjs.js",
+	"module": "dist/index.esm-bundler.js",
+	"browser": "dist/index.esm-browser.js",
+	"unpkg": "dist/index.global.prod.js",
+	"jsdelivr": "dist/index.global.prod.js",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"module": "./dist/index.esm-bundler.js",
+			"require": "./dist/index.cjs.js",
+			"import": "./dist/index.mjs"
+		},
+		"./*": "./*"
+	},
+	"directories": {
+		"lib": "lib",
+		"dist": "dist",
+		"src": "src"
+	},
+	"files": [
+		"lib",
+		"dist",
+		"typings"
+	],
+	"dependencies": {
+		"js-cool": "^4.6.0",
+		"vue-demi": "^0.14.5"
+	},
+	"devDependencies": {
+		"@microsoft/api-extractor": "^7.35.1",
+		"eslint": "^8.42.0",
+		"prettier": "^2.8.8",
+		"vue": "^3.3.4",
+		"vue2": "npm:vue@^2.7.14"
+	},
+	"peerDependencies": {
+		"@vue/composition-api": ">=1.0.0",
+		"vue": "^2.0.0 || >=3.0.0"
+	},
+	"peerDependenciesMeta": {
+		"@vue/composition-api": {
+			"optional": true
+		}
+	},
+	"pnpm": {
+		"peerDependencyRules": {
+			"ignoreMissing": [
+				"@babel/core",
+				"webpack"
+			],
+			"allowedVersions": {}
+		}
+	},
+	"keywords": [
+		"vue",
+		"vue2.0",
+		"vue3.0",
+		"use-speak",
+		"SpeechSynthesis",
+		"vue-plugin",
+		"use-speech",
+		"use-speak",
+		"useSpeak",
+		"saqqdy"
+	],
+	"license": "MIT",
+	"author": "saqqdy <https://github.com/saqqdy>",
+	"homepage": "https://github.com/saqqdy/uni-use/tree/master/packages/speak#readme",
+	"bugs": {
+		"url": "https://github.com/saqqdy/uni-use/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/saqqdy/uni-use.git",
+		"directory": "packages/speak"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org",
+		"access": "public"
+	}
+}

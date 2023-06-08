@@ -37,17 +37,17 @@ $ yarn add use-downloads
 ### General use
 
 ```js
-import useDownloads from 'use-downloads'
+import { download } from 'use-downloads'
 
-useDownloads('js/image/css/style', options)
+download('url', options)
 ```
 
 2. by require
 
 ```js
-const useDownloads = require('use-downloads')
+const { download } = require('use-downloads')
 
-useDownloads('js/image/css/style', options)
+download('url', options)
 ```
 
 ### Use CDN resource

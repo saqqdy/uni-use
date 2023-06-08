@@ -1,6 +1,6 @@
 {
-	"name": "use-downloads",
-	"description": "A js utilities that contains all the methods for downloading files",
+	"name": "use-textarea",
+	"description": "A combined api for editable html and textarea",
 	"version": "1.2.0",
 	"packageManager": "pnpm@8.6.0",
 	"main": "dist/index.cjs.js",
@@ -28,10 +28,25 @@
 		"dist",
 		"typings"
 	],
+	"dependencies": {
+		"js-cool": "^4.6.0",
+		"vue-demi": "^0.14.5"
+	},
 	"devDependencies": {
 		"@microsoft/api-extractor": "^7.35.1",
 		"eslint": "^8.42.0",
-		"prettier": "^2.8.8"
+		"prettier": "^2.8.8",
+		"vue": "^3.3.4",
+		"vue2": "npm:vue@^2.7.14"
+	},
+	"peerDependencies": {
+		"@vue/composition-api": ">=1.0.0",
+		"vue": "^2.0.0 || >=3.0.0"
+	},
+	"peerDependenciesMeta": {
+		"@vue/composition-api": {
+			"optional": true
+		}
 	},
 	"pnpm": {
 		"peerDependencyRules": {
@@ -43,25 +58,22 @@
 		}
 	},
 	"keywords": [
-		"use-downloads",
-		"load-javascript",
-		"load-script",
-		"load-js",
-		"load-image",
-		"load-style",
-		"load-css",
+		"use-textarea",
+		"textarea",
+		"use-textarea",
+		"useTextarea",
 		"saqqdy"
 	],
 	"license": "MIT",
 	"author": "saqqdy <https://github.com/saqqdy>",
-	"homepage": "https://github.com/saqqdy/uni-use/tree/master/packages/use-downloads#readme",
+	"homepage": "https://github.com/saqqdy/uni-use/tree/master/packages/textarea#readme",
 	"bugs": {
 		"url": "https://github.com/saqqdy/uni-use/issues"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/saqqdy/uni-use.git",
-		"directory": "packages/use-downloads"
+		"directory": "packages/textarea"
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org",

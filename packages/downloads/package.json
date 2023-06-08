@@ -1,0 +1,70 @@
+{
+	"name": "use-downloads",
+	"description": "A js utilities that contains all the methods for downloading files",
+	"version": "1.2.0",
+	"packageManager": "pnpm@8.6.0",
+	"main": "dist/index.cjs.js",
+	"module": "dist/index.esm-bundler.js",
+	"browser": "dist/index.esm-browser.js",
+	"unpkg": "dist/index.global.prod.js",
+	"jsdelivr": "dist/index.global.prod.js",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"module": "./dist/index.esm-bundler.js",
+			"require": "./dist/index.cjs.js",
+			"import": "./dist/index.mjs"
+		},
+		"./*": "./*"
+	},
+	"directories": {
+		"lib": "lib",
+		"dist": "dist",
+		"src": "src"
+	},
+	"files": [
+		"lib",
+		"dist",
+		"typings"
+	],
+	"devDependencies": {
+		"@microsoft/api-extractor": "^7.35.1",
+		"eslint": "^8.42.0",
+		"prettier": "^2.8.8"
+	},
+	"pnpm": {
+		"peerDependencyRules": {
+			"ignoreMissing": [
+				"@babel/core",
+				"webpack"
+			],
+			"allowedVersions": {}
+		}
+	},
+	"keywords": [
+		"use-downloads",
+		"load-javascript",
+		"load-script",
+		"load-js",
+		"load-image",
+		"load-style",
+		"load-css",
+		"saqqdy"
+	],
+	"license": "MIT",
+	"author": "saqqdy <https://github.com/saqqdy>",
+	"homepage": "https://github.com/saqqdy/uni-use/tree/master/packages/downloads#readme",
+	"bugs": {
+		"url": "https://github.com/saqqdy/uni-use/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/saqqdy/uni-use.git",
+		"directory": "packages/downloads"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org",
+		"access": "public"
+	}
+}

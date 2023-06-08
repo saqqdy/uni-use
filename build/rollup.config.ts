@@ -65,8 +65,8 @@ for (const {
 	const dirName = name.replace(/\./g, sep)
 	const PROJECT_ROOT = resolve(__dirname, '..', 'packages', dirName)
 	const pkg = require(join(PROJECT_ROOT, 'package.json'))
-	const HAS_INDEX_MJS = existsSync(join(PROJECT_ROOT, 'index.mjs'))
-	const HAS_INDEX_DEFAULT = existsSync(join(PROJECT_ROOT, 'index.default.ts'))
+	const HAS_INDEX_MJS = existsSync(join(PROJECT_ROOT, 'src', 'index.mjs'))
+	const HAS_INDEX_DEFAULT = existsSync(join(PROJECT_ROOT, 'src', 'index.default.ts'))
 	const banner =
 		'/*!\n' +
 		' * ' +
@@ -84,7 +84,7 @@ for (const {
 		' */'
 
 	configs.push({
-		input: join(PROJECT_ROOT, 'index.ts'),
+		input: join(PROJECT_ROOT, 'src', 'index.ts'),
 		file: join(PROJECT_ROOT, 'dist', 'index.esm-bundler.js'),
 		format: 'es',
 		external,
@@ -95,7 +95,7 @@ for (const {
 	if (browser !== false) {
 		configs.push(
 			{
-				input: join(PROJECT_ROOT, 'index.ts'),
+				input: join(PROJECT_ROOT, 'src', 'index.ts'),
 				file: join(PROJECT_ROOT, 'dist', 'index.esm-browser.js'),
 				format: 'es',
 				browser: true,
@@ -104,7 +104,7 @@ for (const {
 				env: 'development'
 			},
 			{
-				input: join(PROJECT_ROOT, 'index.ts'),
+				input: join(PROJECT_ROOT, 'src', 'index.ts'),
 				file: join(PROJECT_ROOT, 'dist', 'index.esm-browser.prod.js'),
 				format: 'es',
 				browser: true,
@@ -119,7 +119,7 @@ for (const {
 	// output mjs
 	if (mjs !== false && !HAS_INDEX_MJS) {
 		configs.push({
-			input: join(PROJECT_ROOT, 'index.ts'),
+			input: join(PROJECT_ROOT, 'src', 'index.ts'),
 			file: join(PROJECT_ROOT, 'dist', 'index.mjs'),
 			format: 'es',
 			external,
@@ -130,7 +130,7 @@ for (const {
 	// output cjs
 	if (cjs !== false) {
 		configs.push({
-			input: join(PROJECT_ROOT, HAS_INDEX_DEFAULT ? 'index.default.ts' : 'index.ts'),
+			input: join(PROJECT_ROOT, 'src', HAS_INDEX_DEFAULT ? 'index.default.ts' : 'index.ts'),
 			file: join(PROJECT_ROOT, 'dist', 'index.cjs.js'),
 			format: 'cjs',
 			external,
@@ -142,7 +142,11 @@ for (const {
 	if (iife !== false) {
 		configs.push(
 			{
-				input: join(PROJECT_ROOT, HAS_INDEX_DEFAULT ? 'index.default.ts' : 'index.ts'),
+				input: join(
+					PROJECT_ROOT,
+					'src',
+					HAS_INDEX_DEFAULT ? 'index.default.ts' : 'index.ts'
+				),
 				file: join(PROJECT_ROOT, 'dist', 'index.global.js'),
 				format: 'iife',
 				iifeName,
@@ -152,7 +156,11 @@ for (const {
 				env: 'development'
 			},
 			{
-				input: join(PROJECT_ROOT, HAS_INDEX_DEFAULT ? 'index.default.ts' : 'index.ts'),
+				input: join(
+					PROJECT_ROOT,
+					'src',
+					HAS_INDEX_DEFAULT ? 'index.default.ts' : 'index.ts'
+				),
 				file: join(PROJECT_ROOT, 'dist', 'index.global.prod.js'),
 				format: 'iife',
 				minify: true,
