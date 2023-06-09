@@ -3,6 +3,7 @@ import { existsSync } from 'fs'
 import { createRequire } from 'node:module'
 import { fileURLToPath } from 'url'
 import type { InternalModuleFormat, OutputOptions, Plugin, RollupOptions } from 'rollup'
+import importCss from 'rollup-plugin-import-css'
 import { packages } from './packages'
 import {
 	babel,
@@ -12,6 +13,8 @@ import {
 	nodeResolve,
 	replace,
 	terser,
+	styles,
+	requireCss,
 	typescript,
 	visual
 } from './plugins'
@@ -214,7 +217,18 @@ function createEntry(config: Config) {
 		_config.external = _config.external.concat(config.externalUmd)
 	}
 
-	_config.plugins.push(replace(), nodeResolve(), commonjs)
+	_config.plugins.push(
+		replace(),
+		nodeResolve(),
+		commonjs,
+		// importCss({
+		// 	modules: true,
+		// 	transform: (code: string) => {
+		// 		return code
+		// 	}
+		// })
+		requireCss({})
+	)
 
 	if (config.transpile !== false) {
 		_config.plugins.push(babel())
