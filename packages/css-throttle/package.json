@@ -50,15 +50,6 @@
 			"optional": true
 		}
 	},
-	"pnpm": {
-		"peerDependencyRules": {
-			"ignoreMissing": [
-				"@babel/core",
-				"webpack"
-			],
-			"allowedVersions": {}
-		}
-	},
 	"keywords": [
 		"use-css-throttle",
 		"css-throttle",

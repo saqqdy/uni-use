@@ -23,6 +23,10 @@ export const packages: PackageManifest[] = [
 		name: 'css-throttle',
 		pkgName: 'use-css-throttle',
 		iifeName: 'useCssThrottle',
+		browser: false,
+		iife: false,
+		cjs: false,
+		mjs: false,
 		display: 'A composition api for css throttle, supports vue2.0 and vue3.0'
 	},
 	{

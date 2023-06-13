@@ -102,6 +102,9 @@ importers:
       reinstaller:
         specifier: ^3.0.0
         version: 3.0.0(debug@4.3.4)(js-cool@4.6.0)
+      resolve:
+        specifier: ^1.22.2
+        version: 1.22.2
       rimraf:
         specifier: ^5.0.1
         version: 5.0.1
@@ -126,6 +129,9 @@ importers:
       rollup-plugin-inject-code:
         specifier: ^1.1.0
         version: 1.1.0(core-js@3.30.2)(rollup@3.23.0)(terser@5.17.7)
+      rollup-plugin-require-css:
+        specifier: 1.0.0-beta.1
+        version: 1.0.0-beta.1(core-js@3.30.2)(rollup@3.23.0)
       rollup-plugin-styles:
         specifier: ^4.0.0
         version: 4.0.0(rollup@3.23.0)
@@ -8411,6 +8417,16 @@ packages:
       terser: 5.17.7
     transitivePeerDependencies:
       - core-js
+    dev: true
+
+  /rollup-plugin-require-css@1.0.0-beta.1(core-js@3.30.2)(rollup@3.23.0):
+    resolution: {integrity: sha512-aundThKI8ydjeaqB/7Vg4gu4NFGhPx96x8fOwPXbuwxFQTVhdeI2HtSk/7kHNiVcpDBVCIy7xkApNIE9iLfnoA==}
+    dependencies:
+      '@rollup/pluginutils': 5.0.2(rollup@3.23.0)
+      js-cool: 4.6.0(core-js@3.30.2)
+    transitivePeerDependencies:
+      - core-js
+      - rollup
     dev: true
 
   /rollup-plugin-styles@4.0.0(rollup@3.23.0):

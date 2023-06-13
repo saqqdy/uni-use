@@ -48,15 +48,6 @@
 			"optional": true
 		}
 	},
-	"pnpm": {
-		"peerDependencyRules": {
-			"ignoreMissing": [
-				"@babel/core",
-				"webpack"
-			],
-			"allowedVersions": {}
-		}
-	},
 	"keywords": [
 		"vue",
 		"vue2.0",
