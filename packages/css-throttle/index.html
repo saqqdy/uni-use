@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<script>
-		const sheet = new CSSStyleSheet()
-sheet.replaceSync(
-	'.throttle {color: red; \n  -webkit-animation: throttle var(--css-throttle-delay, 1.2s) step-end forwards;\n          animation: throttle var(--css-throttle-delay, 1.2s) step-end forwards;\n}\n.throttle:active {\n  -webkit-animation: none;\n          animation: none;\n}\n@-webkit-keyframes throttle {\n  from {\n    pointer-events: none;\n    opacity: var(--css-throttle-opacity, 0.75);\n  }\n  to {\n    pointer-events: all;\n    opacity: 1;\n  }\n}\n@keyframes throttle {\n  from {\n    pointer-events: none;\n    opacity: var(--css-throttle-opacity, 0.75);\n  }\n  to {\n    pointer-events: all;\n    opacity: 1;\n  }\n}\n'
-)
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script>
+			const sheet = new CSSStyleSheet()
+			sheet.replaceSync(
+				'.throttle {color: red; \n  -webkit-animation: throttle var(--css-throttle-delay, 1.2s) step-end forwards;\n          animation: throttle var(--css-throttle-delay, 1.2s) step-end forwards;\n}\n.throttle:active {\n  -webkit-animation: none;\n          animation: none;\n}\n@-webkit-keyframes throttle {\n  from {\n    pointer-events: none;\n    opacity: var(--css-throttle-opacity, 0.75);\n  }\n  to {\n    pointer-events: all;\n    opacity: 1;\n  }\n}\n@keyframes throttle {\n  from {\n    pointer-events: none;\n    opacity: var(--css-throttle-opacity, 0.75);\n  }\n  to {\n    pointer-events: all;\n    opacity: 1;\n  }\n}\n'
+			)
 
-const css = /* #__PURE__ */ Object.freeze({
-	__proto__: null
-})
-document.adoptedStyleSheets = [sheet]
-// import { readFileSync } from 'node:fs'
-// import css from './node_modules/css-throttle/src/index.css'
-console.log(css, sheet, document.styleSheets)
-	</script>
-</head>
-<body>
-	<button class="throttle" onclick="console.log('throttle save')">I am a "throttle" save</button>
-</body>
+			const css = /* #__PURE__ */ Object.freeze({
+				__proto__: null
+			})
+			document.adoptedStyleSheets = [sheet]
+			// import { readFileSync } from 'node:fs'
+			// import css from './node_modules/css-throttle/src/index.css'
+			console.log(css, sheet, document.styleSheets)
+		</script>
+	</head>
+	<body>
+		<button class="throttle" onclick="console.log('throttle save')">
+			I am a "throttle" save
+		</button>
+	</body>
 </html>
