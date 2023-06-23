@@ -1,6 +1,6 @@
 {
-	"name": "use-speak",
-	"description": "A composition api for SpeechSynthesis, supports vue2.0 and vue3.0",
+	"name": "use-recognition",
+	"description": "A composition api for SpeechRecognition, supports vue2.0 and vue3.0",
 	"version": "1.4.0",
 	"packageManager": "pnpm@8.6.3",
 	"main": "dist/index.cjs.js",
@@ -34,6 +34,7 @@
 	},
 	"devDependencies": {
 		"@microsoft/api-extractor": "^7.36.0",
+		"@types/dom-speech-recognition": "^0.0.1",
 		"eslint": "^8.43.0",
 		"prettier": "^2.8.8",
 		"vue": "^3.3.4",
@@ -52,24 +53,23 @@
 		"vue",
 		"vue2.0",
 		"vue3.0",
-		"use-speak",
+		"use-recognition",
 		"SpeechSynthesis",
 		"vue-plugin",
 		"use-speech",
-		"use-speak",
-		"useSpeak",
+		"useRecognition",
 		"saqqdy"
 	],
 	"license": "MIT",
 	"author": "saqqdy <https://github.com/saqqdy>",
-	"homepage": "https://github.com/saqqdy/uni-use/tree/master/packages/speak#readme",
+	"homepage": "https://github.com/saqqdy/uni-use/tree/master/packages/recognition#readme",
 	"bugs": {
 		"url": "https://github.com/saqqdy/uni-use/issues"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/saqqdy/uni-use.git",
-		"directory": "packages/speak"
+		"directory": "packages/recognition"
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org",

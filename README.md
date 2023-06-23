@@ -17,6 +17,7 @@ Collection of common composition apis for vue2 & vue3
 - A js utilities that contains all the methods for downloading files: [use-downloads](https://github.com/saqqdy/uni-use/tree/master/packages/downloads)
 - A combined api for editable html and textarea: [use-textarea](https://github.com/saqqdy/uni-use/tree/master/packages/textarea)
 - A composition api for SpeechSynthesis, supports vue2.0 and vue3.0: [use-speak](https://github.com/saqqdy/uni-use/tree/master/packages/speak)
+- A composition api for SpeechRecognition, supports vue2.0 and vue3.0: [use-recognition](https://github.com/saqqdy/uni-use/tree/master/packages/recognition)
 - (Developing...) A composition api for css throttle, supports vue2.0 and vue3.0: [use-css-throttle](https://github.com/saqqdy/uni-use/tree/master/packages/css-throttle)
 
 ## Install

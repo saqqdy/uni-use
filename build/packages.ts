@@ -19,6 +19,12 @@ export const packages: PackageManifest[] = [
 		iifeName: 'useSpeak',
 		display: 'A composition api for SpeechSynthesis, supports vue2.0 and vue3.0'
 	},
+	{
+		name: 'recognition',
+		pkgName: 'use-recognition',
+		iifeName: 'useRecognition',
+		display: 'A composition api for SpeechRecognition, supports vue2.0 and vue3.0'
+	},
 	// {
 	// 	name: 'css-throttle',
 	// 	pkgName: 'use-css-throttle',
