@@ -28,8 +28,11 @@ const { values, positionals } = parseArgs({
 	allowPositionals: true
 })
 
-const packageName = positionals[0] || (values.package as string)
 const watch = values.watch as boolean
+let packageName = positionals[0] || (values.package as string)
+try {
+	packageName = JSON.parse(packageName)
+} catch {}
 
 const packages = getPackages(packageName)
 
@@ -67,6 +70,16 @@ async function buildMetaFiles() {
 }
 
 async function build() {
+	consola.info('Rollup build => %s', packageName)
+	execSync(
+		`pnpm run build:rollup${watch ? ' --watch' : ''}${
+			packageName ? ' --environment BUILD_PACKAGE:' + packageName : ''
+		}`,
+		{
+			stdio: 'inherit'
+		}
+	)
+
 	for (const { build, name, extractTypes } of packages) {
 		const dirName = name.replace(/\./g, sep)
 		const cwd = resolve(__dirname, '..', 'packages', dirName)
@@ -103,16 +116,6 @@ async function build() {
 			cwd
 		})
 	}
-
-	consola.info('Rollup build => %s', packageName)
-	execSync(
-		`pnpm run build:rollup${watch ? ' --watch' : ''}${
-			packageName ? ' --environment BUILD_PACKAGE:' + packageName : ''
-		}`,
-		{
-			stdio: 'inherit'
-		}
-	)
 
 	// consola.info("Fix types");
 	// execSync("pnpm run types:fix", { stdio: "inherit" });
