@@ -42,3 +42,17 @@ export const packages: PackageManifest[] = [
 		display: 'Collection of common composition apis for vue2 & vue3'
 	}
 ]
+
+export const packageNames = packages.map(({ pkgName }) => pkgName)
+
+export function getPackages(name?: string | string[]) {
+	if (!name) return packages
+
+	const list = packages.filter(item => ([] as string[]).concat(name).includes(item.name))
+	if (list.length === 0) {
+		console.info(`no package founded`)
+		return packages
+	}
+
+	return list
+}
