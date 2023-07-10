@@ -30,7 +30,7 @@
 	],
 	"dependencies": {
 		"css-throttle": "^1.0.1",
-		"js-cool": "^4.7.0",
+		"js-cool": "^5.1.0",
 		"mount-style": "^1.2.0",
 		"vue-demi": "^0.14.5"
 	},
