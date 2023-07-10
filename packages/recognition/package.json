@@ -36,7 +36,7 @@
 		"@microsoft/api-extractor": "^7.36.0",
 		"@types/dom-speech-recognition": "^0.0.1",
 		"eslint": "^8.43.0",
-		"prettier": "^2.8.8",
+		"prettier": "^3.0.0",
 		"vue": "^3.3.4",
 		"vue2": "npm:vue@^2.7.14"
 	},
