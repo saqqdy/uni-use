@@ -1,8 +1,8 @@
 {
-	"name": "use-css-throttle",
-	"description": "A composition api for css throttle, supports vue2.0 and vue3.0",
-	"version": "1.3.0-beta.1",
-	"packageManager": "pnpm@8.6.1",
+	"name": "@uni-use/supported",
+	"description": "SSR compatibility isSupported",
+	"version": "1.4.0",
+	"packageManager": "pnpm@8.6.7",
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.esm-bundler.js",
 	"browser": "dist/index.esm-browser.js",
@@ -27,9 +27,8 @@
 		"typings"
 	],
 	"dependencies": {
-		"css-throttle": "^1.0.1",
+		"@uni-use/mounted": "workspace:*",
 		"js-cool": "^5.1.0",
-		"mount-style": "^1.2.0",
 		"vue-demi": "^0.14.5"
 	},
 	"devDependencies": {
@@ -49,22 +48,22 @@
 		}
 	},
 	"keywords": [
-		"use-css-throttle",
-		"css-throttle",
-		"use-css-throttle",
-		"useCss-throttle",
+		"use-supported",
+		"supported",
+		"ssr",
+		"useSupported",
 		"saqqdy"
 	],
 	"license": "MIT",
 	"author": "saqqdy <https://github.com/saqqdy>",
-	"homepage": "https://github.com/saqqdy/uni-use/tree/master/packages/css-throttle#readme",
+	"homepage": "https://github.com/saqqdy/uni-use/tree/master/packages/supported#readme",
 	"bugs": {
 		"url": "https://github.com/saqqdy/uni-use/issues"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/saqqdy/uni-use.git",
-		"directory": "packages/css-throttle"
+		"directory": "packages/supported"
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org",

@@ -1,9 +1,9 @@
-import { dirname, join, resolve, sep } from 'path'
-import { existsSync } from 'fs'
+import { dirname, join, resolve, sep } from 'node:path'
+import { existsSync } from 'node:fs'
 import { createRequire } from 'node:module'
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from 'node:url'
 import type { InternalModuleFormat, OutputOptions, Plugin, RollupOptions } from 'rollup'
-import { packages } from './packages'
+import { getPackages, packageNames } from './packages'
 import {
 	babel,
 	commonjs,
@@ -47,6 +47,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const require = createRequire(import.meta.url)
 
+const packages = getPackages(process.env.BUILD_PACKAGE)
 const configs: Config[] = []
 
 for (const {
@@ -78,7 +79,7 @@ for (const {
 		' * ' +
 		pkg.description +
 		'\n' +
-		' * (c) 2021-' +
+		' * (c) 2022-' +
 		new Date().getFullYear() +
 		' saqqdy<https://github.com/saqqdy> \n' +
 		' * Released under the MIT License.\n' +
@@ -193,7 +194,11 @@ function createEntry(config: Config) {
 			exports: 'auto',
 			extend: true,
 			plugins: [],
-			globals: {}
+			globals: {
+				vue: 'VueDemi',
+				vue2: 'VueDemi',
+				'vue-demi': 'VueDemi'
+			}
 		},
 		onwarn: (msg: any, warn) => {
 			if (!/Circular/.test(msg)) {
@@ -209,7 +214,7 @@ function createEntry(config: Config) {
 	}
 
 	if (!isGlobalBuild) {
-		_config.external.push('core-js', 'js-cool')
+		_config.external.push('core-js', 'js-cool', ...packageNames)
 		if (config.external) _config.external = _config.external.concat(config.external)
 	} else if (config.externalUmd) {
 		_config.external = _config.external.concat(config.externalUmd)
@@ -221,7 +226,7 @@ function createEntry(config: Config) {
 		_config.plugins.push(babel())
 		isTypeScript &&
 			_config.plugins.push(
-				// config.target ? esbuild({ target: config.target }) : esbuild()
+				// esbuild()
 				typescript()
 			)
 	}

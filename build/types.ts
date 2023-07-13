@@ -15,7 +15,9 @@ export interface PackageManifest {
 	cjs?: boolean
 	mjs?: boolean
 	browser?: boolean
+	bundler?: boolean
 	types?: boolean
 	extractTypes?: boolean
+	// submodules?: boolean
 	target?: string // esbuild target
 }

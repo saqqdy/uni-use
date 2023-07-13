@@ -1,5 +1,10 @@
 # Change Logs
 
+## 2023.06.28 v1.5.0
+
+1. add `@uni-use/mounted` `@uni-use/supported` `@uni-use/request`
+2. upgrade all package
+
 ## 2023.06.23 v1.4.0
 
 1. add `use-recognition`

@@ -10,7 +10,7 @@ export const banner =
 	' * ' +
 	pkg.description +
 	'\n' +
-	' * (c) 2023-' +
+	' * (c) 2022-' +
 	new Date().getFullYear() +
 	' saqqdy<https://github.com/saqqdy> \n' +
 	' * Released under the MIT License.\n' +

@@ -2,7 +2,7 @@
 	"name": "use-downloads",
 	"description": "A js utilities that contains all the methods for downloading files",
 	"version": "1.4.0",
-	"packageManager": "pnpm@8.6.3",
+	"packageManager": "pnpm@8.6.7",
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.esm-bundler.js",
 	"browser": "dist/index.esm-browser.js",
@@ -19,18 +19,16 @@
 		"./*": "./*"
 	},
 	"directories": {
-		"lib": "lib",
 		"dist": "dist",
 		"src": "src"
 	},
 	"files": [
-		"lib",
 		"dist",
 		"typings"
 	],
 	"devDependencies": {
-		"@microsoft/api-extractor": "^7.36.0",
-		"eslint": "^8.43.0",
+		"@microsoft/api-extractor": "^7.36.2",
+		"eslint": "^8.44.0",
 		"prettier": "^2.8.8"
 	},
 	"keywords": [
