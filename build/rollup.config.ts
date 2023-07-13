@@ -220,7 +220,7 @@ function createEntry(config: Config) {
 		_config.external = _config.external.concat(config.externalUmd)
 	}
 
-	_config.plugins.push(replace(), nodeResolve(), commonjs, requireCss({}))
+	_config.plugins.push(nodeResolve(), replace(), commonjs, requireCss({}))
 
 	if (config.transpile !== false) {
 		_config.plugins.push(babel())
