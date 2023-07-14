@@ -39,7 +39,58 @@ $ yarn add @uni-use/request
 ```ts
 import useRequest from '@uni-use/request'
 
-const { request } = useRequest({})
+const {
+  isFetching,
+  error,
+  data,
+  execute,
+  abort,
+  canAbort,
+  createFetch,
+  isFinished,
+  statusCode,
+  response,
+  aborted,
+  onFetchResponse,
+  onFetchError,
+  onFetchFinally
+} = useRequest({
+  immediate,
+  refetch,
+  timeout,
+  beforeFetch,
+  afterFetch,
+  onFetchResponse,
+  onFetchError
+})
+  .get()
+  .put()
+  .post()
+  .delete()
+  .patch()
+  .head()
+  .options()
+  //
+  .json()
+  .text()
+  .blob()
+  .arrayBuffer()
+  .formData()
+
+createFetch({
+  baseUrl: 'https://my-api.com',
+  options: {
+    async beforeFetch({ options }) {
+      const myToken = await getMyToken()
+      options.headers.Authorization = `Bearer ${myToken}`
+
+      return { options }
+    }
+  },
+  fetchOptions: {
+    mode: 'cors'
+  }
+})
 
 request({
   url: '/path/of/api'

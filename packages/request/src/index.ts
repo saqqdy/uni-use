@@ -6,9 +6,18 @@ import type {
 	AxiosInstance,
 	AxiosResponse,
 	CancelToken,
-	CancelTokenSource,
+	// CancelTokenSource,
 	InternalAxiosRequestConfig
 } from 'axios'
+
+// type DataType = 'text' | 'json' | 'blob' | 'arrayBuffer' | 'formData'
+// type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS'
+// type Combination = 'overwrite' | 'chain'
+
+// const payloadMapping: Record<string, string> = {
+// 	json: 'application/json',
+// 	text: 'text/plain',
+//   }
 
 export interface UseRequestRequestOptions<D = any> extends InternalAxiosRequestConfig<D> {
 	['use-request']?: any
@@ -54,8 +63,8 @@ function useRequest<T = any>(config: UseRequestConfig<T>) {
 		onRequestError,
 		onResponse,
 		onResponseError,
-		onError,
-		onCancel
+		onError
+		// onCancel
 	} = config
 	if (!instance) instance = axios.create()
 	if (!axiosSeries)
