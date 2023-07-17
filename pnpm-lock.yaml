@@ -107,13 +107,13 @@ importers:
         version: 1.4.0
       reinstaller:
         specifier: ^3.0.2
-        version: 3.0.2(debug@4.3.4)(js-cool@5.1.0)
+        version: 3.0.2(debug@4.3.4)(js-cool@5.2.0)
       resolve:
         specifier: ^1.22.2
         version: 1.22.2
       rm-all:
         specifier: ^1.1.1
-        version: 1.1.1(js-cool@5.1.0)
+        version: 1.1.1(js-cool@5.2.0)
       rollup:
         specifier: ^3.26.2
         version: 3.26.2
@@ -2574,6 +2574,11 @@ packages:
 
   /@nicolo-ribaudo/semver-v6@6.3.3:
     resolution: {integrity: sha512-3Yc1fUTs69MG/uZbJlLSI3JISMn2UV2rg+1D/vROUqZyh3l6iYHCs7GMp+M40ZD7yOdDbYjJcU1oTJhrc+dGKg==}
+    hasBin: true
+    dev: true
+
+  /@node-kit/extra.cp@3.1.1:
+    resolution: {integrity: sha512-YyOp/OPHRW/Uv0TyJWXoHI3O/s8pAgX4IIizYvQi4oJjPNt95RvuIbBZ4q2YcSYOtHpLn1eoTJ3q7+wBmV0U+A==}
     hasBin: true
     dev: true
 
@@ -6082,6 +6087,11 @@ packages:
       side-channel: 1.0.4
     dev: true
 
+  /invert-kv@3.0.1:
+    resolution: {integrity: sha512-CYdFeFexxhv/Bcny+Q0BfOV+ltRlJcd4BBZBYFX/O0u4npJrgZtIcjokegtiSMAvlMTJ+Koq0GBCc//3bueQxw==}
+    engines: {node: '>=8'}
+    dev: true
+
   /ip@2.0.0:
     resolution: {integrity: sha512-WKa+XuLG1A1R0UWhl2+1XQSi+fZWMsYKffMZTTYsiZaUD8k2yDAj5atimTUD2TZkyCkNEeYE5NhFZmupOGtjYQ==}
     dev: true
@@ -6852,6 +6862,21 @@ packages:
       mount-style: 1.2.0
       tslib: 2.6.0
       use-downloads: 1.4.0
+    dev: false
+
+  /js-cool@5.2.0:
+    resolution: {integrity: sha512-+z63ceh7CTEMW3fcil11I8Z3Nbli9v1Z0SysDInu0lFCpCgv9kXqy26whc6f26nSmkbYUps9UA2adrH0+QTDRw==}
+    engines: {node: '>=12.20'}
+    dependencies:
+      load-source: 1.2.0
+      mount-css: 1.2.0
+      mount-image: 1.2.0
+      mount-script: 1.2.0
+      mount-style: 1.2.0
+      os-lang: 3.1.1
+      tslib: 2.6.0
+      use-downloads: 1.4.0
+    dev: true
 
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -6958,6 +6983,13 @@ packages:
   /kleur@3.0.3:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
+    dev: true
+
+  /lcid@4.0.1:
+    resolution: {integrity: sha512-qI4sQt7g19ZWtaodPKBUvym/pen9/lZzqyl2qeItTFPwJptXllVhe3KI+mV9xmBa4cnZoik8m1obToxqFbVIZQ==}
+    engines: {node: '>=14.16'}
+    dependencies:
+      invert-kv: 3.0.1
     dev: true
 
   /leven@3.1.0:
@@ -7771,6 +7803,14 @@ packages:
       wcwidth: 1.0.1
     dev: true
 
+  /os-lang@3.1.1:
+    resolution: {integrity: sha512-+1Ij2yQHWVbMwbXVrG7Y6rs3t/IZmOPO9m1vNNy/nX0DbuXm+ZVusLQLy8mf953pXVbAXO4KynuisuH0crHfCA==}
+    hasBin: true
+    dependencies:
+      '@node-kit/extra.cp': 3.1.1
+      lcid: 4.0.1
+    dev: true
+
   /os-tmpdir@1.0.2:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
     engines: {node: '>=0.10.0'}
@@ -8572,7 +8612,7 @@ packages:
       jsesc: 0.5.0
     dev: true
 
-  /reinstaller@3.0.2(debug@4.3.4)(js-cool@5.1.0):
+  /reinstaller@3.0.2(debug@4.3.4)(js-cool@5.2.0):
     resolution: {integrity: sha512-VLjzE9tQMghK53x1Ccx96AEdRRe+dKq5zsnSNFLf1d7QsLAaRV0yX3lU1djgIaPYNSjDOXBRXjt8Y/GFTrHt/A==}
     hasBin: true
     peerDependencies:
@@ -8586,7 +8626,7 @@ packages:
       cosmiconfig: 8.2.0
       debug: 4.3.4
       global-modules: 2.0.0
-      js-cool: 5.1.0
+      js-cool: 5.2.0
       monorepo-root: 2.5.1
       ora: 6.3.1
       what-pm: 2.5.1(core-js@3.30.2)
@@ -8673,7 +8713,7 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rm-all@1.1.1(js-cool@5.1.0):
+  /rm-all@1.1.1(js-cool@5.2.0):
     resolution: {integrity: sha512-5n3SiDtp0BxHX485YhfbxR1RLtR9KlRTCj0hHahTufYEhUyE9ydy1nRtP4OG9kXifsYClu43gwkqcOnjpz/HPQ==}
     engines: {node: '>=12.20'}
     hasBin: true
@@ -8682,7 +8722,7 @@ packages:
     dependencies:
       '@node-kit/extra.fs': 3.1.1
       commander: 11.0.0
-      js-cool: 5.1.0
+      js-cool: 5.2.0
     dev: true
 
   /rollup-plugin-add-banner@1.1.0(rollup@3.26.2):
