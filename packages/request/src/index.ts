@@ -9,6 +9,7 @@ import type {
 	// CancelTokenSource,
 	InternalAxiosRequestConfig
 } from 'axios'
+import { ref, shallowRef } from '@vue/reactivity'
 
 // type DataType = 'text' | 'json' | 'blob' | 'arrayBuffer' | 'formData'
 // type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS'
@@ -32,6 +33,8 @@ export interface UseRequestRequestOptions<D = any> extends InternalAxiosRequestC
 export interface UseRequestConfig<D = any> extends InternalAxiosRequestConfig<D> {
 	unique?: boolean
 	orderly?: boolean
+	refetch?: boolean
+	immediate?: boolean
 	setHeaders?(instance: AxiosInstance): void
 	onRequest?(
 		config: InternalAxiosRequestConfig
@@ -50,57 +53,78 @@ export interface UseRequestConfig<D = any> extends InternalAxiosRequestConfig<D>
 let instance: AxiosInstance, axiosSeries: any
 const defaultOptions = {
 	unique: false,
-	orderly: true
+	orderly: true,
+	refetch: false,
+	immediate: true
 }
 
 function useRequest<T = any>(config: UseRequestConfig<T>) {
 	config = Object.assign(defaultOptions, config)
-	const {
-		unique,
-		orderly,
-		setHeaders,
-		onRequest,
-		onRequestError,
-		onResponse,
-		onResponseError,
-		onError
-		// onCancel
-	} = config
-	if (!instance) instance = axios.create()
-	if (!axiosSeries)
-		axiosSeries = wrapper(instance, {
-			unique,
-			orderly
-		})
+	// const {
+	// 	unique,
+	// 	orderly,
+	// 	setHeaders,
+	// 	onRequest,
+	// 	onRequestError,
+	// 	onResponse,
+	// 	onResponseError,
+	// 	onError
+	// 	// onCancel
+	// } = config
+	// const { refetch } = config
 
-	if (setHeaders) setHeaders(instance)
+	const data = shallowRef(null)
+	const error = shallowRef(null)
+	const isFetching = ref(false)
 
-	if (onRequest) {
-		instance.interceptors.request.use(onRequest, (err: any) => {
-			onRequestError && onRequestError(err)
-			onError && onError(err)
-			return Promise.reject(err)
-		})
-	}
+	// const execute = ref(null)
 
-	if (onResponse) {
-		instance.interceptors.response.use(onResponse, (err: any) => {
-			onResponseError && onResponseError(err)
-			onError && onError(err)
-			return Promise.reject(err)
-		})
-	}
+	// if (!instance) instance = axios.create()
+	// if (!axiosSeries)
+	// 	axiosSeries = wrapper(instance, {
+	// 		unique,
+	// 		orderly
+	// 	})
+
+	// if (setHeaders) setHeaders(instance)
+
+	// if (onRequest) {
+	// 	instance.interceptors.request.use(onRequest, (err: any) => {
+	// 		onRequestError && onRequestError(err)
+	// 		onError && onError(err)
+	// 		return Promise.reject(err)
+	// 	})
+	// }
+
+	// if (onResponse) {
+	// 	instance.interceptors.response.use(onResponse, (err: any) => {
+	// 		onResponseError && onResponseError(err)
+	// 		onError && onError(err)
+	// 		return Promise.reject(err)
+	// 	})
+	// }
+
+	// /**
+	//  * request
+	//  */
+	// function request(config: UseRequestRequestOptions) {
+	// 	return axiosSeries(config)
+	// }
 
 	/**
-	 * request
+	 * create request
 	 */
-	function request(config: UseRequestRequestOptions) {
-		return axiosSeries(config)
+	function createRequest() {
+		return ''
 	}
 
 	return {
 		instance,
-		request
+		data,
+		error,
+		//
+		createRequest
+		// request
 	}
 }
 
