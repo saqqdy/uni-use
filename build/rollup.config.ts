@@ -185,7 +185,7 @@ function createEntry(config: Config) {
 	const isTypeScript = config.input.endsWith('.ts')
 
 	const _config: Options = {
-		external: ['vue', 'vue2', 'vue-demi'],
+		external: ['vue', 'vue2', 'vue-demi', 'axios'],
 		input: config.input,
 		plugins: [],
 		output: {
@@ -197,7 +197,8 @@ function createEntry(config: Config) {
 			globals: {
 				vue: 'VueDemi',
 				vue2: 'VueDemi',
-				'vue-demi': 'VueDemi'
+				'vue-demi': 'VueDemi',
+				axios: 'axios'
 			}
 		},
 		onwarn: (msg: any, warn) => {
@@ -214,7 +215,7 @@ function createEntry(config: Config) {
 	}
 
 	if (!isGlobalBuild) {
-		_config.external.push('core-js', 'js-cool', ...packageNames)
+		_config.external.push('core-js', 'js-cool', 'axios-series', ...packageNames)
 		if (config.external) _config.external = _config.external.concat(config.external)
 	} else if (config.externalUmd) {
 		_config.external = _config.external.concat(config.externalUmd)

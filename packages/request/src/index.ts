@@ -9,7 +9,7 @@ import type {
 	// CancelTokenSource,
 	InternalAxiosRequestConfig
 } from 'axios'
-import { ref, shallowRef } from '@vue/reactivity'
+import { ref, shallowRef } from 'vue-demi'
 
 /**
  * Void function
@@ -77,17 +77,24 @@ export interface UseRequestReturn<T> {
 	/**
 	 * Indicates if the fetch request is able to be aborted
 	 */
-	canAbort: ComputedRef<boolean>
+	canAbort?: ComputedRef<boolean>
 
 	/**
 	 * Indicates if the fetch request was aborted
 	 */
-	aborted: Ref<boolean>
+	// aborted: Ref<boolean>
 
 	/**
 	 * Abort the fetch request
 	 */
-	abort: Fn
+	// abort: Fn
+
+	/**
+	 * request main function
+	 */
+	request: <T = any, R = AxiosResponse<T>, D = any>(
+		config: UseRequestRequestOptions<D> // InternalAxiosRequestConfig<T> & UseRequestConfig
+	) => Promise<R>
 
 	/**
 	 * Manually call the fetch
@@ -116,11 +123,12 @@ export interface UseRequestReturn<T> {
 // type Combination = 'overwrite' | 'chain'
 
 export interface UseRequestRequestOptions<D = any> extends InternalAxiosRequestConfig<D> {
-	['use-request']?: any
+	// ['use-request']?: any
 	unique?: boolean
 	orderly?: boolean
 	// requestOptions?: UseRequestRequestOptions
 	cancelToken?: CancelToken
+	signal?: AbortSignal
 	type?: string
 	error?: boolean
 }
@@ -128,6 +136,12 @@ export interface UseRequestRequestOptions<D = any> extends InternalAxiosRequestC
 export interface UseRequestConfig {
 	unique?: boolean
 	orderly?: boolean
+
+	cancelToken?: CancelToken
+	signal?: AbortSignal
+	type?: string
+	error?: boolean
+
 	refetch?: boolean
 	immediate?: boolean
 	setHeaders?(instance: AxiosInstance): void
@@ -145,7 +159,7 @@ export interface UseRequestConfig {
 	onCancel?(error: any): void
 }
 
-let instance: AxiosInstance, axiosSeries: any
+let instance: AxiosInstance, axiosSeries: ReturnType<typeof wrapper>
 const defaultOptions = {
 	unique: false,
 	orderly: true,
@@ -153,17 +167,17 @@ const defaultOptions = {
 	immediate: true
 }
 
-function useRequest<T = any>(
-	config: InternalAxiosRequestConfig<T> & UseRequestConfig
-): UseRequestReturn<T> & PromiseLike<UseRequestReturn<T>>
-function useRequest<T = any>(
-	config: InternalAxiosRequestConfig<T>,
-	options: UseRequestConfig
-): UseRequestReturn<T> & PromiseLike<UseRequestReturn<T>>
+// function useRequest<T = any>(
+// 	config: InternalAxiosRequestConfig<T> & UseRequestConfig
+// ): UseRequestReturn<T> & PromiseLike<UseRequestReturn<T>>
+// function useRequest<T = any>(
+// 	config: InternalAxiosRequestConfig<T>,
+// 	options: UseRequestConfig
+// ): UseRequestReturn<T> & PromiseLike<UseRequestReturn<T>>
 function useRequest<T = any>(
 	config: InternalAxiosRequestConfig<T> & UseRequestConfig,
 	options?: UseRequestConfig
-): UseRequestReturn<T> & PromiseLike<UseRequestReturn<T>> {
+): UseRequestReturn<T> /* & PromiseLike<UseRequestReturn<T>> */ {
 	config = Object.assign(defaultOptions, config)
 	const {
 		unique,
@@ -184,6 +198,7 @@ function useRequest<T = any>(
 	const isFetching = ref(false)
 	const isFinished = ref(false)
 	const statusCode = ref<number | null>(null)
+	const response = shallowRef(null)
 
 	// const execute = ref(null)
 
@@ -194,7 +209,7 @@ function useRequest<T = any>(
 			orderly
 		})
 
-	// if (setHeaders) setHeaders(instance)
+	if (setHeaders) setHeaders(instance)
 
 	if (onRequest) {
 		instance.interceptors.request.use(onRequest, (err: any) => {
@@ -215,16 +230,19 @@ function useRequest<T = any>(
 	/**
 	 * request
 	 */
-	function request(config: UseRequestRequestOptions) {
+	function request<T = any, R = AxiosResponse<T>, D = any>(
+		config: UseRequestRequestOptions<D> // InternalAxiosRequestConfig<T> & UseRequestConfig
+		// options?: UseRequestConfig
+	): Promise<R> {
 		return axiosSeries(config)
 	}
 
 	/**
 	 * create request
 	 */
-	function createRequest() {
-		return ''
-	}
+	// function createRequest() {
+	// 	return ''
+	// }
 
 	// function waitUntilFinished() {
 	// 	return new Promise<UseRequestReturn<T>>((resolve, reject) => {
@@ -240,7 +258,7 @@ function useRequest<T = any>(
 	return {
 		isFinished,
 		statusCode,
-		// response,
+		response, // -------
 		error,
 		data,
 		isFetching,
@@ -249,8 +267,8 @@ function useRequest<T = any>(
 		// abort,
 		// execute,
 		//
-		request,
-		createRequest
+		request
+		// createRequest,
 		// then(onFulfilled, onRejected) {
 		// 	return waitUntilFinished().then(onFulfilled, onRejected)
 		// }
