@@ -101,13 +101,13 @@ importers:
         version: 1.4.0
       reinstaller:
         specifier: ^3.0.2
-        version: 3.0.2(debug@4.3.4)(js-cool@5.6.0)
+        version: 3.0.2(debug@4.3.4)(js-cool@5.7.2)
       resolve:
         specifier: ^1.22.4
         version: 1.22.4
       rm-all:
         specifier: ^1.1.1
-        version: 1.1.1(js-cool@5.6.0)
+        version: 1.1.1(js-cool@5.7.2)
       rollup:
         specifier: ^3.28.0
         version: 3.28.0
@@ -6909,6 +6909,21 @@ packages:
       os-lang: 3.1.1
       tslib: 2.6.2
       use-downloads: 1.4.0
+    dev: false
+
+  /js-cool@5.7.2:
+    resolution: {integrity: sha512-TEBctLzE72+Hzl8lY5oIjSsPSzalrS9JjLiwsUb3RqtinIbi+NyxInPaIDlLIpGxo+zI1q3N7q6ZBmkz8j3hZg==}
+    engines: {node: '>=12.20'}
+    dependencies:
+      load-source: 1.2.0
+      mount-css: 1.2.0
+      mount-image: 1.2.0
+      mount-script: 1.2.0
+      mount-style: 1.2.0
+      os-lang: 3.1.1
+      tslib: 2.6.2
+      use-downloads: 1.4.0
+    dev: true
 
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -8662,7 +8677,7 @@ packages:
       jsesc: 0.5.0
     dev: true
 
-  /reinstaller@3.0.2(debug@4.3.4)(js-cool@5.6.0):
+  /reinstaller@3.0.2(debug@4.3.4)(js-cool@5.7.2):
     resolution: {integrity: sha512-VLjzE9tQMghK53x1Ccx96AEdRRe+dKq5zsnSNFLf1d7QsLAaRV0yX3lU1djgIaPYNSjDOXBRXjt8Y/GFTrHt/A==}
     hasBin: true
     peerDependencies:
@@ -8676,7 +8691,7 @@ packages:
       cosmiconfig: 8.2.0
       debug: 4.3.4
       global-modules: 2.0.0
-      js-cool: 5.6.0
+      js-cool: 5.7.2
       monorepo-root: 2.5.1
       ora: 6.3.1
       what-pm: 2.5.1(core-js@3.30.2)
@@ -8772,7 +8787,7 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rm-all@1.1.1(js-cool@5.6.0):
+  /rm-all@1.1.1(js-cool@5.7.2):
     resolution: {integrity: sha512-5n3SiDtp0BxHX485YhfbxR1RLtR9KlRTCj0hHahTufYEhUyE9ydy1nRtP4OG9kXifsYClu43gwkqcOnjpz/HPQ==}
     engines: {node: '>=12.20'}
     hasBin: true
@@ -8781,7 +8796,7 @@ packages:
     dependencies:
       '@node-kit/extra.fs': 3.1.1
       commander: 11.0.0
-      js-cool: 5.6.0
+      js-cool: 5.7.2
     dev: true
 
   /rollup-plugin-add-banner@1.1.0(rollup@3.28.0):
