@@ -89,7 +89,7 @@ importers:
         version: 14.0.1
       load-yml:
         specifier: ^1.3.0
-        version: 1.3.0(core-js@3.30.2)
+        version: 1.4.0
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
@@ -669,7 +669,7 @@ packages:
     resolution: {integrity: sha512-8Dl6+HD/cKifutF5qGd/8ZJi84QeAKh+CEe1sBzz8UayBBGg1dAIJrdHOcOM5b2MpzWL2yuotJTtGjETq0qjXg==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.22.5
+      '@babel/types': 7.22.19
     dev: true
 
   /@babel/helper-module-transforms@7.22.20:
@@ -804,11 +804,6 @@ packages:
     resolution: {integrity: sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==}
     engines: {node: '>=6.9.0'}
 
-  /@babel/helper-validator-identifier@7.22.5:
-    resolution: {integrity: sha512-aJXu+6lErq8ltp+JhkJUfk1MTGyuA4v7f3pA+BJ5HLfNC6nAQ0Cpi9uOquUj8Hehg0aUiHzWQbOVJGao6ztBAQ==}
-    engines: {node: '>=6.9.0'}
-    dev: true
-
   /@babel/helper-validator-option@7.22.15:
     resolution: {integrity: sha512-bMn7RmyFjY/mdECUbgn9eoSY4vqvacUnS9i9vGAGttgFWesO6B4CYWA7XlpbWgBt71iv/hfbPlynohStqnu5hA==}
     engines: {node: '>=6.9.0'}
@@ -871,13 +866,6 @@ packages:
 
   /@babel/parser@7.22.16:
     resolution: {integrity: sha512-+gPfKv8UWeKKeJTUxe59+OobVcrYHETCsORl61EmSkmgymguYk/X5bp7GuUIXaFsc6y++v8ZxPsLSSuujqDphA==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
-    dependencies:
-      '@babel/types': 7.22.19
-
-  /@babel/parser@7.22.5:
-    resolution: {integrity: sha512-DFZMC9LJUG9PLOclRC32G63UXwzqS2koQC8dkx+PLdmt1xSePYpbT/NbsrJy8Q/muXz7o/h/d4A7Fuyixm559Q==}
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
@@ -1511,7 +1499,7 @@ packages:
       '@babel/helper-hoist-variables': 7.22.5
       '@babel/helper-module-transforms': 7.22.20
       '@babel/helper-plugin-utils': 7.22.5
-      '@babel/helper-validator-identifier': 7.22.5
+      '@babel/helper-validator-identifier': 7.22.20
     dev: true
 
   /@babel/plugin-transform-modules-umd@7.22.5:
@@ -2024,15 +2012,6 @@ packages:
       '@babel/helper-string-parser': 7.22.5
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
-
-  /@babel/types@7.22.5:
-    resolution: {integrity: sha512-zo3MIHGOkPOfoRXitsgHLjEXmlDaD/5KU1Uzuc9GNiZPhSqVxVRtxuPaSBZDsYZ9qV88AjtMtWW7ww98loJ9KA==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-string-parser': 7.22.5
-      '@babel/helper-validator-identifier': 7.22.20
-      to-fast-properties: 2.0.0
-    dev: true
 
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
@@ -2801,15 +2780,13 @@ packages:
       find-up: 5.0.0
     dev: true
 
-  /@node-kit/pnpm-workspace-info@2.5.1(core-js@3.30.2):
+  /@node-kit/pnpm-workspace-info@2.5.1:
     resolution: {integrity: sha512-uJfJgNvHNt+fZJW/GeEONDN5SIIYR7DGB3GSzYzvYq6NMW46B/pjDmIHokeaI80VyLzwiJvV/K4RgF9IOe5cXA==}
     dependencies:
       '@node-kit/extra.path': 2.5.1
       '@node-kit/pnpm-workspace-root': 2.5.1
       fast-glob: 3.3.0
-      load-yml: 1.3.0(core-js@3.30.2)
-    transitivePeerDependencies:
-      - core-js
+      load-yml: 1.4.0
     dev: true
 
   /@node-kit/pnpm-workspace-root@2.5.1:
@@ -3610,7 +3587,7 @@ packages:
   /@vue/compiler-sfc@3.3.4:
     resolution: {integrity: sha512-6y/d8uw+5TkCuzBkgLS0v3lSM3hJDntFEiUORM11pQ/hKvkhSKZrXW6i69UyXlJQisJxuUEJKAWEqWbWsLeNKQ==}
     dependencies:
-      '@babel/parser': 7.22.5
+      '@babel/parser': 7.22.16
       '@vue/compiler-core': 3.3.4
       '@vue/compiler-dom': 3.3.4
       '@vue/compiler-ssr': 3.3.4
@@ -7513,18 +7490,13 @@ packages:
       mount-script: 1.2.0
       mount-style: 1.2.0
 
-  /load-yml@1.3.0(core-js@3.30.2):
-    resolution: {integrity: sha512-LkbCmVZULVsMADpXe3WIvM8GfsTDDbbnItNaEJIhoJeyab359GyQ5dM4esqyE+XH60Yo8xB5N2SeEk174RY6Rg==}
+  /load-yml@1.4.0:
+    resolution: {integrity: sha512-L0O2nUOOZ2bNMvFudewMPDhdJqtNoxEHUUhy0Z22aEZXSzmvR1UK5utu67uTpmwmFo+UrdycWceGuifcsgJi5w==}
     engines: {node: '>=12.20'}
-    peerDependencies:
-      core-js: '>= 3'
-    peerDependenciesMeta:
-      core-js:
-        optional: true
     dependencies:
       '@types/js-yaml': 4.0.5
-      core-js: 3.30.2
       js-yaml: 4.1.0
+      tslib: 2.6.2
     dev: true
 
   /locate-path@5.0.0:
@@ -8500,12 +8472,10 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /pm-info@2.5.1(core-js@3.30.2):
+  /pm-info@2.5.1:
     resolution: {integrity: sha512-cCK0S13Pk3z6vG1G0XyoqWPVg6SLEi7LnNRVlDep+JM50bsUD49rtEmhcCWKqTEEJD0QHYNlWNpb4W4s+Vi2tA==}
     dependencies:
-      load-yml: 1.3.0(core-js@3.30.2)
-    transitivePeerDependencies:
-      - core-js
+      load-yml: 1.4.0
     dev: true
 
   /postcss-calc@8.2.4(postcss@8.4.24):
@@ -9101,8 +9071,8 @@ packages:
       js-cool: 5.8.1
       monorepo-root: 2.5.1
       ora: 6.3.1
-      what-pm: 2.5.1(core-js@3.30.2)
-      workspace-projects: 2.5.1(core-js@3.30.2)
+      what-pm: 2.5.1
+      workspace-projects: 2.5.1
     dev: true
 
   /require-directory@2.1.1:
@@ -10303,14 +10273,12 @@ packages:
     hasBin: true
     dev: true
 
-  /what-pm@2.5.1(core-js@3.30.2):
+  /what-pm@2.5.1:
     resolution: {integrity: sha512-5CLrxTyIKk3o2Tshv1BMAe84NjJbucr/uio8fX4Jr838/enF/aQEpAUWLcj5WSbA3dOJWWsoySLQPCK2SPCeSA==}
     dependencies:
       find-up: 5.0.0
-      pm-info: 2.5.1(core-js@3.30.2)
+      pm-info: 2.5.1
       workspace-root: 2.5.1
-    transitivePeerDependencies:
-      - core-js
     dev: true
 
   /which-boxed-primitive@1.0.2:
@@ -10386,14 +10354,12 @@ packages:
     resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
     dev: true
 
-  /workspace-projects@2.5.1(core-js@3.30.2):
+  /workspace-projects@2.5.1:
     resolution: {integrity: sha512-bUnx92d1MrnukbK+bK4NZ04+4VMC9jCOfvkB4D67KwzvxVmaBCh0zul0jQ6eghxGxMibxEtdIVQwYQuF0pSu3Q==}
     dependencies:
       '@node-kit/lerna-workspace-info': 2.5.1
-      '@node-kit/pnpm-workspace-info': 2.5.1(core-js@3.30.2)
+      '@node-kit/pnpm-workspace-info': 2.5.1
       '@node-kit/yarn-workspace-info': 2.5.1
-    transitivePeerDependencies:
-      - core-js
     dev: true
 
   /workspace-root@2.5.1:
