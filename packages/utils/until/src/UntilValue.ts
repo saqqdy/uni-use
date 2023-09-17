@@ -19,7 +19,7 @@ export class UntilValue<T, Not extends boolean = false> extends UntilBase<T> {
 				? Promise<T>
 				: Promise<P>
 
-		const { flush = 'sync', deep = false, timeout = 0, throwOnTimeout } = options ?? {}
+		const { flush = 'sync', deep = false, timeout, throwOnTimeout } = options ?? {}
 		let stop: (() => void) | null = null
 		const watcher = new Promise<T>(resolve => {
 			stop = watch(
@@ -39,7 +39,7 @@ export class UntilValue<T, Not extends boolean = false> extends UntilBase<T> {
 		})
 
 		const promises = [watcher]
-		if (![undefined, null, NaN].includes(timeout)) {
+		if (timeout != null) {
 			promises.push(
 				waiting(timeout, throwOnTimeout)
 					.then(() => toValue(this.r))

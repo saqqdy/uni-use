@@ -25,7 +25,7 @@ export class UntilBase<T, Not extends boolean = false> {
 	toMatch<U extends T = T>(
 		// condition: ((v: T) => v is U) | ((v: T) => boolean),
 		condition: (v: T) => boolean,
-		{ flush = 'sync', deep = false, timeout = 0, throwOnTimeout }: UntilToMatchOptions = {}
+		{ flush = 'sync', deep = false, timeout, throwOnTimeout }: UntilToMatchOptions = {}
 	): Not extends true ? Promise<Exclude<T, U>> : Promise<U> {
 		let stop: (() => void) | null = null
 		const watcher = new Promise<T>(resolve => {
@@ -47,7 +47,7 @@ export class UntilBase<T, Not extends boolean = false> {
 
 		const promises = [watcher]
 
-		if (![undefined, null, NaN].includes(timeout)) {
+		if (timeout != null) {
 			promises.push(
 				waiting(timeout, throwOnTimeout)
 					.then(() => toValue(this.r))
