@@ -29,6 +29,7 @@
 	"dependencies": {
 		"css-throttle": "^1.0.1",
 		"js-cool": "^5.8.1",
+		"tslib": "^2.6.2",
 		"mount-style": "^1.2.0",
 		"vue-demi": "^0.14.5"
 	},

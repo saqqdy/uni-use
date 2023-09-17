@@ -32,6 +32,7 @@
 		"axios": "^1.4.0",
 		"axios-series": "^1.1.0",
 		"js-cool": "^5.8.1",
+		"tslib": "^2.6.2",
 		"vue-demi": "^0.14.5"
 	},
 	"devDependencies": {
