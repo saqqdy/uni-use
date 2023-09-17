@@ -1,6 +1,6 @@
 {
-	"name": "@uni-use/supported",
-	"description": "SSR compatibility isSupported",
+	"name": "@uni-use/until",
+	"description": "Promised one-time watch for changes",
 	"version": "1.4.0",
 	"packageManager": "pnpm@8.6.7",
 	"main": "dist/index.cjs.js",
@@ -28,6 +28,7 @@
 	],
 	"dependencies": {
 		"@uni-use/mounted": "workspace:*",
+		"@uni-use/shared": "workspace:*",
 		"js-cool": "^5.8.1",
 		"vue-demi": "^0.14.5"
 	},
@@ -46,22 +47,22 @@
 		}
 	},
 	"keywords": [
-		"use-supported",
-		"supported",
+		"use-until",
+		"until",
 		"ssr",
-		"useSupported",
+		"useUntil",
 		"saqqdy"
 	],
 	"license": "MIT",
 	"author": "saqqdy <https://github.com/saqqdy>",
-	"homepage": "https://github.com/saqqdy/uni-use/tree/master/packages/utils/supported#readme",
+	"homepage": "https://github.com/saqqdy/uni-use/tree/master/packages/utils/until#readme",
 	"bugs": {
 		"url": "https://github.com/saqqdy/uni-use/issues"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/saqqdy/uni-use.git",
-		"directory": "packages/utils/supported"
+		"directory": "packages/utils/until"
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org",

@@ -27,9 +27,7 @@
 		"typings"
 	],
 	"devDependencies": {
-		"@microsoft/api-extractor": "^7.36.3",
-		"eslint": "^8.45.0",
-		"prettier": "^3.0.0"
+		"@microsoft/api-extractor": "^7.36.3"
 	},
 	"keywords": [
 		"use-downloads",

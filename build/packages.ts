@@ -2,6 +2,12 @@ import type { PackageManifest } from './types'
 
 export const packages: PackageManifest[] = [
 	{
+		name: 'utils.shared',
+		pkgName: '@uni-use/shared',
+		iifeName: 'useShared',
+		display: 'Collection of shared Utilities'
+	},
+	{
 		name: 'utils.mounted',
 		pkgName: '@uni-use/mounted',
 		iifeName: 'useMounted',
@@ -12,6 +18,12 @@ export const packages: PackageManifest[] = [
 		pkgName: '@uni-use/supported',
 		iifeName: 'useSupported',
 		display: 'SSR compatibility isSupported'
+	},
+	{
+		name: 'utils.until',
+		pkgName: '@uni-use/until',
+		iifeName: 'useUntil',
+		display: 'Promised one-time watch for changes'
 	},
 	{
 		name: 'downloads',
