@@ -2,7 +2,7 @@
 
 ## 2023.09.17 v1.5.0
 
-1. add `@uni-use/mounted` `@uni-use/supported` `@uni-use/shared` `@uni-use/until`
+1. add [@uni-use/mounted](https://github.com/saqqdy/uni-use/tree/master/packages/utils/mounted) [@uni-use/supported](https://github.com/saqqdy/uni-use/tree/master/packages/utils/supported) [@uni-use/shared](https://github.com/saqqdy/uni-use/tree/master/packages/utils/shared) [@uni-use/until](https://github.com/saqqdy/uni-use/tree/master/packages/utils/until)
 2. upgrade all package
 
 ## 2023.06.23 v1.4.0
