@@ -23,7 +23,7 @@ importers:
         version: 5.9.0(eslint@8.49.0)(prettier@3.0.3)(typescript@5.1.6)
       '@node-kit/extra.fs':
         specifier: ^3.1.1
-        version: 3.1.1
+        version: 3.2.0
       '@rollup/plugin-babel':
         specifier: ^6.0.3
         version: 6.0.3(rollup@3.29.2)
@@ -2755,8 +2755,8 @@ packages:
     resolution: {integrity: sha512-cj0gMQ+yE4jNmCrtz1TEXYMX+zNOJEGxGy1YzG2IBek0ndKszIYRxyLbIz3URh1MSTMGT+f9Zxy3iARB8vVP9g==}
     dev: true
 
-  /@node-kit/extra.fs@3.1.1:
-    resolution: {integrity: sha512-pKwNgj+v+0CMh5IAjVN9HeyMKonQtx3xf/KF6K0o51KWIKIvTGl2b2jMN4tgNXd1cdachfEe01GSr0z6/T+cwA==}
+  /@node-kit/extra.fs@3.2.0:
+    resolution: {integrity: sha512-BtGZcB4ffMneAyKd2qy0umOURc7kMjgNOQlEQNqgkQwcwoGejqiJLQpzKVhAr2waBx7OLZx+/3sNzGgngSzx7w==}
     hasBin: true
     dev: true
 
@@ -9182,7 +9182,7 @@ packages:
     peerDependencies:
       js-cool: '>= 2'
     dependencies:
-      '@node-kit/extra.fs': 3.1.1
+      '@node-kit/extra.fs': 3.2.0
       commander: 11.0.0
       js-cool: 5.8.1
     dev: true
