@@ -1,8 +1,8 @@
 {
 	"name": "@uni-use/request",
 	"description": "An easy to use axios based http client combinatorial api with support for return sequentially",
-	"version": "1.4.0",
-	"packageManager": "pnpm@8.6.7",
+	"version": "1.5.0",
+	"packageManager": "pnpm@8.7.6",
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.esm-bundler.js",
 	"browser": "dist/index.esm-browser.js",

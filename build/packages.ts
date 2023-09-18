@@ -49,13 +49,13 @@ export const packages: PackageManifest[] = [
 		iifeName: 'useRecognition',
 		display: 'A composition api for SpeechRecognition, supports vue2.0 and vue3.0'
 	},
-	{
-		name: 'request',
-		pkgName: '@uni-use/request',
-		iifeName: 'useRequest',
-		display:
-			'An easy to use axios based http client combinatorial api with support for return sequentially'
-	},
+	// {
+	// 	name: 'request',
+	// 	pkgName: '@uni-use/request',
+	// 	iifeName: 'useRequest',
+	// 	display:
+	// 		'An easy to use axios based http client combinatorial api with support for return sequentially'
+	// },
 	// {
 	// 	name: 'css-throttle',
 	// 	pkgName: 'use-css-throttle',

@@ -34,57 +34,26 @@ $ yarn add @uni-use/shared
 
 ## Usage
 
-### 1. Using in vue3.x:
+### ES6 module
 
-```vue
-<script setup>
-import useShared from '@uni-use/shared'
+```ts
+import { toValue } from '@uni-use/shared'
 
-const isShared = useShared(() => navigator && 'getBattery' in navigator)
-
-if (isShared.value) {
-  // do something
-  navigator.getBattery
-}
-
-defineExpose({
-  isShared
-})
-</script>
+toValue()
 ```
 
-### 2. Using in vue2.7.x:
+### Node.js require
 
-```vue
-<script>
-import useShared from '@uni-use/shared'
+```ts
+const { toValue } = require('@uni-use/shared')
 
-export default {
-  setup() {
-    const isShared = useShared(() => navigator && 'getBattery' in navigator)
-
-    if (isShared.value) {
-      // do something
-      navigator.getBattery
-    }
-
-    return {
-      isShared
-    }
-  }
-}
-</script>
+toValue()
 ```
 
-### 3. Use CDN resource
+### Use CDN resource
 
 ```html
-<script src="https://unpkg.com/vue-demi@latest/lib/index.iife.js"></script>
 <script src="https://unpkg.com/@uni-use/shared@1.0.0/dist/index.global.prod.js"></script>
-<script>
-  const shared = useShared(() => navigator && 'getBattery' in navigator)
-  // ...
-</script>
 ```
 
 ## Support & Issues

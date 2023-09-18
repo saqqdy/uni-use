@@ -2,7 +2,7 @@
 
 ## 2023.09.17 v1.5.0
 
-1. add `@uni-use/mounted` `@uni-use/supported` `@uni-use/request` `@uni-use/shared` `@uni-use/until`
+1. add `@uni-use/mounted` `@uni-use/supported` `@uni-use/shared` `@uni-use/until`
 2. upgrade all package
 
 ## 2023.06.23 v1.4.0

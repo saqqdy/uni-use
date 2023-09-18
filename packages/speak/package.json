@@ -1,8 +1,8 @@
 {
 	"name": "use-speak",
 	"description": "A composition api for SpeechSynthesis, supports vue2.0 and vue3.0",
-	"version": "1.4.0",
-	"packageManager": "pnpm@8.6.7",
+	"version": "1.5.0",
+	"packageManager": "pnpm@8.7.6",
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.esm-bundler.js",
 	"browser": "dist/index.esm-browser.js",

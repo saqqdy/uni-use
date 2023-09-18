@@ -1,8 +1,8 @@
 {
 	"name": "@uni-use/monorepo",
 	"description": "Collection of common composition apis for vue2 & vue3",
-	"version": "1.4.0",
-	"packageManager": "pnpm@8.6.7",
+	"version": "1.5.0",
+	"packageManager": "pnpm@8.7.6",
 	"main": "index.js",
 	"files": [
 		"index.js",
