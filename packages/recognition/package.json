@@ -29,10 +29,10 @@
 	"dependencies": {
 		"js-cool": "^5.8.1",
 		"tslib": "^2.6.2",
-		"vue-demi": "^0.14.5"
+		"vue-demi": "^0.14.6"
 	},
 	"devDependencies": {
-		"@microsoft/api-extractor": "^7.36.4",
+		"@microsoft/api-extractor": "^7.37.0",
 		"@types/dom-speech-recognition": "^0.0.1",
 		"vue": "^3.3.4",
 		"vue2": "npm:vue@^2.7.14"

@@ -27,7 +27,7 @@
 		"typings"
 	],
 	"devDependencies": {
-		"@microsoft/api-extractor": "^7.36.3"
+		"@microsoft/api-extractor": "^7.37.0"
 	},
 	"keywords": [
 		"use-downloads",

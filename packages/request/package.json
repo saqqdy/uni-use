@@ -29,14 +29,14 @@
 	"dependencies": {
 		"@uni-use/shared": "workspace:*",
 		"@vue/reactivity": "^3.3.4",
-		"axios": "^1.4.0",
+		"axios": "^1.5.0",
 		"axios-series": "^1.1.0",
 		"js-cool": "^5.8.1",
 		"tslib": "^2.6.2",
-		"vue-demi": "^0.14.5"
+		"vue-demi": "^0.14.6"
 	},
 	"devDependencies": {
-		"@microsoft/api-extractor": "^7.36.3",
+		"@microsoft/api-extractor": "^7.37.0",
 		"vue": "^3.3.4",
 		"vue2": "npm:vue@^2.7.14"
 	},
