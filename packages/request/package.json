@@ -31,7 +31,7 @@
 		"@vue/reactivity": "^3.3.4",
 		"axios": "^1.5.0",
 		"axios-series": "^1.1.0",
-		"js-cool": "^5.8.1",
+		"js-cool": "^5.10.0",
 		"tslib": "^2.6.2",
 		"vue-demi": "^0.14.6"
 	},

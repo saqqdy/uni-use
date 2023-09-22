@@ -29,7 +29,7 @@
 	"dependencies": {
 		"@uni-use/mounted": "workspace:*",
 		"@uni-use/shared": "workspace:*",
-		"js-cool": "^5.8.1",
+		"js-cool": "^5.10.0",
 		"tslib": "^2.6.2",
 		"vue-demi": "^0.14.6"
 	},
