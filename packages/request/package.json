@@ -28,6 +28,7 @@
 	],
 	"dependencies": {
 		"@uni-use/shared": "workspace:*",
+		"@uni-use/until": "workspace:*",
 		"@vue/reactivity": "^3.3.4",
 		"axios": "^1.5.0",
 		"axios-series": "^1.1.0",

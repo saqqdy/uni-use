@@ -1,6 +1,7 @@
 // import { isRef, ref } from 'vue-demi'
 import axios from 'axios'
 import wrapper from 'axios-series'
+import until from '@uni-use/until'
 import type { ComputedRef, Ref } from 'vue-demi'
 import type {
 	AxiosInstance,
@@ -10,6 +11,7 @@ import type {
 	InternalAxiosRequestConfig
 } from 'axios'
 import { ref, shallowRef } from 'vue-demi'
+import { awaitTo as to } from 'js-cool'
 
 /**
  * Void function
@@ -53,11 +55,12 @@ export interface UseRequestReturn<T> {
 	 * The statusCode of the HTTP fetch response
 	 */
 	statusCode: Ref<number | null>
+	statusText: Ref<string>
 
 	/**
 	 * The raw response of the fetch response
 	 */
-	response: Ref<Response | null>
+	response: Ref<AxiosResponse<any> | null>
 
 	/**
 	 * Any fetch errors that may have occurred
@@ -105,17 +108,17 @@ export interface UseRequestReturn<T> {
 	/**
 	 * Fires after the fetch request has finished
 	 */
-	// onFetchResponse: EventHookOn<Response>
+	// onResponse: EventHookOn<Response>
 
 	/**
 	 * Fires after a fetch request error
 	 */
-	// onFetchError: EventHookOn
+	// onError: EventHookOn
 
 	/**
 	 * Fires after a fetch has completed
 	 */
-	// onFetchFinally: EventHookOn
+	// onFinally: EventHookOn
 }
 
 // type DataType = 'text' | 'json' | 'blob' | 'arrayBuffer' | 'formData'
@@ -145,15 +148,16 @@ export interface UseRequestConfig {
 	refetch?: boolean
 	immediate?: boolean
 	setHeaders?(instance: AxiosInstance): void
-	onRequest?(
+	beforeRequest?(
 		config: InternalAxiosRequestConfig
 		// requestOptions: UseRequestRequestOptions
 	): InternalAxiosRequestConfig | Promise<InternalAxiosRequestConfig>
-	onRequestError?(error: any): void
-	onResponse?(
+	afterRequest?(
 		res: AxiosResponse<any>
 		// requestOptions: UseRequestRequestOptions
 	): AxiosResponse<any> | Promise<AxiosResponse<any>>
+	updateDataOnError?: boolean
+	onRequestError?(error: any): void
 	onResponseError?(error: any): void
 	onError?(error: any): void
 	onCancel?(error: any): void
@@ -175,66 +179,156 @@ const defaultOptions = {
 // 	options: UseRequestConfig
 // ): UseRequestReturn<T> & PromiseLike<UseRequestReturn<T>>
 function useRequest<T = any>(
+	url: string,
 	config: InternalAxiosRequestConfig<T> & UseRequestConfig,
 	options?: UseRequestConfig
-): UseRequestReturn<T> /* & PromiseLike<UseRequestReturn<T>> */ {
-	config = Object.assign(defaultOptions, config)
+): UseRequestReturn<T> & PromiseLike<UseRequestReturn<T>> {
+	config = Object.assign({}, defaultOptions, config)
 	const {
-		unique,
-		orderly,
-		immediate,
-		setHeaders,
-		onRequest,
+		unique = true,
+		orderly = true,
+		immediate = true,
+		// setHeaders,
+		beforeRequest,
+		afterRequest,
+		// updateDataOnError = false,
 		onRequestError,
-		onResponse,
 		onResponseError,
-		onError
-		// onCancel
+		onError,
+		onCancel
 	} = options || config || {}
 	// const { refetch } = config
 
+	// console.log(afterRequest)
+
 	const data = shallowRef(null)
-	const error = shallowRef(null)
-	const isFetching = ref(false)
-	const isFinished = ref(false)
+	const error = shallowRef<Error | null>(null)
+	const isFetching = ref<boolean>(false)
+	const isFinished = ref<boolean>(false)
 	const statusCode = ref<number | null>(null)
-	const response = shallowRef(null)
+	const statusText = ref<string>('')
+	const response = shallowRef<AxiosResponse<any> | null>(null)
 
 	// const execute = ref(null)
 
-	if (!instance) instance = axios.create()
+	if (!instance) {
+		instance = axios.create()
+		// instance.interceptors.request.clear()
+		// instance.interceptors.response.clear()
+		instance.interceptors.request.use(
+			config => {
+				// isFetching.value = true
+				// console.log(6000, isFetching.value, isFinished.value)
+				return beforeRequest ? beforeRequest(config) : config
+				// return config
+			},
+			(err: any) => {
+				// error.value = err
+				onRequestError && onRequestError(err)
+				onError && onError(err)
+				return Promise.reject(err)
+			}
+		)
+		instance.interceptors.response.use(
+			res => {
+				response.value = res
+				statusCode.value = res.status
+				statusText.value = res.statusText
+				// isFinished.value = true
+				// isFetching.value = false
+				// data.value = res.data
+				// console.log(4000, isFetching.value, isFinished.value, Object.keys(res || {}))
+				return afterRequest ? afterRequest(res) : res
+				// return res
+			},
+			(err: any) => {
+				// error.value = err
+				onResponseError && onResponseError(err)
+				onError && onError(err)
+				return Promise.reject(err)
+			}
+		)
+	}
 	if (!axiosSeries)
 		axiosSeries = wrapper(instance, {
 			unique,
-			orderly
+			orderly,
+			onCancel: err => {
+				console.info('onCancel => ', err.message, err.config?.url)
+			}
 		})
 
-	if (setHeaders) setHeaders(instance)
+	// if (setHeaders) setHeaders(instance)
 
-	if (onRequest) {
-		instance.interceptors.request.use(onRequest, (err: any) => {
-			onRequestError && onRequestError(err)
-			onError && onError(err)
-			return Promise.reject(err)
-		})
-	}
+	// if (
+	// 	// !instance.interceptors.request.handlers.some(
+	// 	// 	({ fulfilled }) => fulfilled === beforeRequest
+	// 	// ) &&
+	// 	beforeRequest
+	// ) {
+	// 	instance.interceptors.request.use(beforeRequest, (err: any) => {
+	// 		onRequestError && onRequestError(err)
+	// 		onError && onError(err)
+	// 		return Promise.reject(err)
+	// 	})
+	// }
 
-	if (onResponse) {
-		instance.interceptors.response.use(onResponse, (err: any) => {
-			onResponseError && onResponseError(err)
-			onError && onError(err)
-			return Promise.reject(err)
-		})
-	}
+	// if (
+	// 	// !instance.interceptors.response.handlers.some(
+	// 	// 	({ fulfilled }) => fulfilled === afterRequest
+	// 	// ) &&
+	// 	afterRequest
+	// ) {
+	// 	instance.interceptors.response.use(afterRequest, (err: any) => {
+	// 		onResponseError && onResponseError(err)
+	// 		onError && onError(err)
+	// 		return Promise.reject(err)
+	// 	})
+	// }
+
+	console.log(
+		7000,
+		// options,
+		// config,
+		instance.interceptors.response.handlers
+		// instance.interceptors.response.handlers.includes(afterRequest)
+	)
 
 	/**
 	 * request
 	 */
-	function request<T = any, R = AxiosResponse<T>, D = any>(
+	async function request<T = any, R = AxiosResponse<T>, D = any>(
 		config: UseRequestRequestOptions<D> // InternalAxiosRequestConfig<T> & UseRequestConfig
 		// options?: UseRequestConfig
 	): Promise<R> {
-		return axiosSeries(config)
+		isFinished.value = false
+		isFetching.value = true
+		// beforeRequest && axios.interceptors.request.eject(beforeRequest)
+		// axiosSeries(config)
+		// 	.then(res => {
+		// 		console.log(500, Object.keys(res))
+		// 	})
+		// 	.catch(res => {
+		// 		console.log(501, Object.keys(res))
+		// 	})
+		const [err, res] = await to(axiosSeries(config))
+		// return axiosSeries(config)
+		if (err) {
+			error.value = err
+			// if (updateDataOnError) data.value = err
+			// throw err
+		} else {
+			// response.value = res
+			data.value = res.data
+			// statusCode.value = res.status
+			// statusText.value = res.statusText
+		}
+		isFinished.value = true
+		isFetching.value = false
+		// afterRequest && axios.interceptors.response.eject(afterRequest)
+
+		return res
+		// return res.data
 	}
 
 	/**
@@ -244,21 +338,11 @@ function useRequest<T = any>(
 	// 	return ''
 	// }
 
-	// function waitUntilFinished() {
-	// 	return new Promise<UseRequestReturn<T>>((resolve, reject) => {
-	// 		until(isFinished)
-	// 			.toBe(true)
-	// 			.then(() => resolve(shell))
-	// 			.catch(error => reject(error))
-	// 	})
-	// }
-
-	if (immediate) Promise.resolve().then(() => request(config))
-
-	return {
+	const shell: UseRequestReturn<T> = {
 		isFinished,
 		statusCode,
-		response, // -------
+		statusText,
+		response,
 		error,
 		data,
 		isFetching,
@@ -266,15 +350,46 @@ function useRequest<T = any>(
 		// aborted,
 		// abort,
 		// execute,
+		// json: setType('json'),
 		//
 		request
 		// createRequest,
-		// then(onFulfilled, onRejected) {
-		// 	return waitUntilFinished().then(onFulfilled, onRejected)
-		// }
-		// onFetchResponse: responseEvent.on,
-		// onFetchError: errorEvent.on,
-		// onFetchFinally: finallyEvent.on
+		// onResponse: responseEvent.on,
+		// onError: errorEvent.on,
+		// onFinally: finallyEvent.on
+	}
+
+	// function setType(type: DataType) {
+	// 	return () => {
+	// 		if (!isFetching.value) {
+	// 			config.type = type
+	// 			return {
+	// 				...shell,
+	// 				then(onFulfilled: any, onRejected: any) {
+	// 					return waitUntilFinished().then(onFulfilled, onRejected)
+	// 				}
+	// 			} as any
+	// 		}
+	// 		return undefined
+	// 	}
+	// }
+
+	function waitUntilFinished() {
+		return new Promise<UseRequestReturn<T>>((resolve, reject) => {
+			until(isFinished)
+				.toBe(true, { timeout1: 2000, throwOnTimeout1: false })
+				.then(() => resolve(shell))
+				.catch((error: any) => reject(error))
+		})
+	}
+
+	if (immediate) Promise.resolve().then(() => request(config))
+
+	return {
+		...shell,
+		then(onFulfilled, onRejected) {
+			return waitUntilFinished().then(onFulfilled, onRejected)
+		}
 	}
 }
 
