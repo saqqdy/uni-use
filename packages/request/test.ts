@@ -51,12 +51,14 @@ function beforeRequest(config) {
 function afterRequest(res) {
 	console.log(
 		4001,
+		res.data
+		// res,
 		// Object.keys(res || {}),
 		// Object.keys(res.config || {}),
-		res.config?.responseType
+		// res.config?.responseType
 	)
 	// return res
-	if (res.data.success || res.config?.responseType === 'text') return res.data
+	if (res.data.success || res.config?.responseType === 'text') return res.data.data
 
 	// const code = String(res.data.code)
 	// const invalidJump = res.config.invalidJump || 1
@@ -137,6 +139,7 @@ function onError(res) {
 		isFinished,
 		isFetching,
 		statusCode,
+		statusText,
 		// response,
 		error,
 		// request
@@ -166,13 +169,13 @@ function onError(res) {
 	// 		data: {},
 	// 		// unique: true,
 	// 		// orderly: true,
-	// 		responseType: 'json',
-	// 		beforeRequest,
-	// 		afterRequest: afterRequest2,
+	// 		responseType: 'json'
+	// 		// beforeRequest,
+	// 		// afterRequest: afterRequest2,
 	// 		// updateDataOnError: true,
-	// 		onRequestError,
-	// 		onResponseError,
-	// 		onError
+	// 		// onRequestError,
+	// 		// onResponseError,
+	// 		// onError
 	// 	},
 	// 	null
 	// ).then(
@@ -180,6 +183,7 @@ function onError(res) {
 	// 		isFinished,
 	// 		isFetching,
 	// 		statusCode,
+	// 		statusText,
 	// 		// response,
 	// 		error,
 	// 		// request
@@ -194,6 +198,8 @@ function onError(res) {
 	// 			isFetching.value,
 	// 			'\n"statusCode2":',
 	// 			statusCode.value,
+	// 			'\n"statusText2":',
+	// 			statusText.value,
 	// 			'\n"error2":',
 	// 			error.value,
 	// 			// Object.keys(response.value || {}),
@@ -215,6 +221,8 @@ function onError(res) {
 				isFetching.value,
 				'\n"statusCode":',
 				statusCode.value,
+				'\n"statusText":',
+				statusText.value,
 				'\n"error":',
 				error.value,
 				// Object.keys(response.value || {}),

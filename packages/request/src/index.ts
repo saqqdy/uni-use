@@ -60,7 +60,7 @@ export interface UseRequestReturn<T> {
 	/**
 	 * The raw response of the fetch response
 	 */
-	response: Ref<AxiosResponse<any> | null>
+	response: Ref<AxiosResponse<any> | undefined>
 
 	/**
 	 * Any fetch errors that may have occurred
@@ -165,7 +165,7 @@ export interface UseRequestConfig {
 
 let instance: AxiosInstance, axiosSeries: ReturnType<typeof wrapper>
 const defaultOptions = {
-	unique: false,
+	unique: true,
 	orderly: true,
 	refetch: false,
 	immediate: true
@@ -185,9 +185,9 @@ function useRequest<T = any>(
 ): UseRequestReturn<T> & PromiseLike<UseRequestReturn<T>> {
 	config = Object.assign({}, defaultOptions, config)
 	const {
-		unique = true,
-		orderly = true,
-		immediate = true,
+		unique,
+		orderly,
+		immediate,
 		// setHeaders,
 		beforeRequest,
 		afterRequest,
@@ -201,60 +201,71 @@ function useRequest<T = any>(
 
 	// console.log(afterRequest)
 
-	const data = shallowRef(null)
+	const data = shallowRef<any>(null)
 	const error = shallowRef<Error | null>(null)
 	const isFetching = ref<boolean>(false)
 	const isFinished = ref<boolean>(false)
 	const statusCode = ref<number | null>(null)
 	const statusText = ref<string>('')
-	const response = shallowRef<AxiosResponse<any> | null>(null)
+	const response = shallowRef<AxiosResponse<any> | undefined>()
 
 	// const execute = ref(null)
 
 	if (!instance) {
-		instance = axios.create()
-		// instance.interceptors.request.clear()
-		// instance.interceptors.response.clear()
-		instance.interceptors.request.use(
-			config => {
-				// isFetching.value = true
-				// console.log(6000, isFetching.value, isFinished.value)
-				return beforeRequest ? beforeRequest(config) : config
-				// return config
-			},
-			(err: any) => {
-				// error.value = err
-				onRequestError && onRequestError(err)
-				onError && onError(err)
-				return Promise.reject(err)
-			}
-		)
-		instance.interceptors.response.use(
-			res => {
-				response.value = res
-				statusCode.value = res.status
-				statusText.value = res.statusText
-				// isFinished.value = true
-				// isFetching.value = false
-				// data.value = res.data
-				// console.log(4000, isFetching.value, isFinished.value, Object.keys(res || {}))
-				return afterRequest ? afterRequest(res) : res
-				// return res
-			},
-			(err: any) => {
-				// error.value = err
-				onResponseError && onResponseError(err)
-				onError && onError(err)
-				return Promise.reject(err)
-			}
-		)
+		instance = axios.create({ timeout: 10000 })
+		// instance.interceptors.response.use(
+		// 	res => {
+		// 		response.value = res
+		// 		statusCode.value = res.status
+		// 		statusText.value = res.statusText
+		// 		return res
+		// 	},
+		// 	(err: any) => Promise.reject(err)
+		// )
 	}
+	// if (beforeRequest || onRequestError) {
+	// 	instance.interceptors.request.clear()
+	// 	instance.interceptors.request.use(
+	// 		config => {
+	// 			// isFetching.value = true
+	// 			// console.log(6000, isFetching.value, isFinished.value)
+	// 			return beforeRequest ? beforeRequest(config) : config
+	// 			// return config
+	// 		},
+	// 		(err: any) => {
+	// 			// error.value = err
+	// 			onRequestError && onRequestError(err)
+	// 			return Promise.reject(err)
+	// 		}
+	// 	)
+	// }
+	// if (onResponseError) {
+	// 	instance.interceptors.response.clear()
+	// 	instance.interceptors.response.use(
+	// 		res => {
+	// 			// response.value = res
+	// 			// statusCode.value = res.status
+	// 			// statusText.value = res.statusText
+	// 			// isFinished.value = true
+	// 			// isFetching.value = false
+	// 			// data.value = res.data
+	// 			// console.log(4000, isFetching.value, isFinished.value, Object.keys(res || {}))
+	// 			// return afterRequest ? afterRequest(res) : res
+	// 			return res
+	// 		},
+	// 		(err: any) => {
+	// 			// error.value = err
+	// 			onResponseError && onResponseError(err)
+	// 			return Promise.reject(err)
+	// 		}
+	// 	)
+	// }
 	if (!axiosSeries)
 		axiosSeries = wrapper(instance, {
 			unique,
 			orderly,
 			onCancel: err => {
-				console.info('onCancel => ', err.message, err.config?.url)
+				console.info('onCancel => ', err.message, err.config)
 			}
 		})
 
@@ -268,7 +279,6 @@ function useRequest<T = any>(
 	// ) {
 	// 	instance.interceptors.request.use(beforeRequest, (err: any) => {
 	// 		onRequestError && onRequestError(err)
-	// 		onError && onError(err)
 	// 		return Promise.reject(err)
 	// 	})
 	// }
@@ -281,18 +291,17 @@ function useRequest<T = any>(
 	// ) {
 	// 	instance.interceptors.response.use(afterRequest, (err: any) => {
 	// 		onResponseError && onResponseError(err)
-	// 		onError && onError(err)
 	// 		return Promise.reject(err)
 	// 	})
 	// }
 
-	console.log(
-		7000,
-		// options,
-		// config,
-		instance.interceptors.response.handlers
-		// instance.interceptors.response.handlers.includes(afterRequest)
-	)
+	// console.log(
+	// 	7000,
+	// 	// options,
+	// 	// config,
+	// 	instance.interceptors.response.handlers
+	// 	// instance.interceptors.response.handlers.includes(afterRequest)
+	// )
 
 	/**
 	 * request
@@ -301,34 +310,40 @@ function useRequest<T = any>(
 		config: UseRequestRequestOptions<D> // InternalAxiosRequestConfig<T> & UseRequestConfig
 		// options?: UseRequestConfig
 	): Promise<R> {
+		if (beforeRequest) config = (await beforeRequest(config)) as UseRequestRequestOptions<D>
+
 		isFinished.value = false
 		isFetching.value = true
-		// beforeRequest && axios.interceptors.request.eject(beforeRequest)
-		// axiosSeries(config)
-		// 	.then(res => {
-		// 		console.log(500, Object.keys(res))
-		// 	})
-		// 	.catch(res => {
-		// 		console.log(501, Object.keys(res))
-		// 	})
-		const [err, res] = await to(axiosSeries(config))
-		// return axiosSeries(config)
-		if (err) {
-			error.value = err
-			// if (updateDataOnError) data.value = err
-			// throw err
+
+		let [err, res] = await to(axiosSeries(config))
+
+		if (res) {
+			response.value = res
+			statusCode.value = res.status
+			statusText.value = res.statusText
+			if (afterRequest) {
+				try {
+					data.value = await afterRequest(res)
+				} catch (_err: any) {
+					err = _err
+					onResponseError && onResponseError(err)
+				}
+			} else {
+				data.value = res.data
+			}
+		} else if (err?.response) {
+			response.value = err.response
+			statusCode.value = err.response.status
+			statusText.value = err.response.statusText
+			onResponseError && onResponseError(response.value)
 		} else {
-			// response.value = res
-			data.value = res.data
-			// statusCode.value = res.status
-			// statusText.value = res.statusText
+			onError && onError(err)
 		}
+		error.value = err
 		isFinished.value = true
 		isFetching.value = false
-		// afterRequest && axios.interceptors.response.eject(afterRequest)
 
-		return res
-		// return res.data
+		return data.value
 	}
 
 	/**
