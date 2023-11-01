@@ -4,6 +4,7 @@ import wrapper from 'axios-series'
 import until from '@uni-use/until'
 import type { ComputedRef, Ref } from 'vue-demi'
 import type {
+	AxiosError,
 	AxiosInstance,
 	AxiosResponse,
 	CancelToken,
@@ -192,10 +193,10 @@ function useRequest<T = any>(
 		beforeRequest,
 		afterRequest,
 		// updateDataOnError = false,
-		onRequestError,
+		// onRequestError,
 		onResponseError,
-		onError,
-		onCancel
+		onError
+		// onCancel
 	} = options || config || {}
 	// const { refetch } = config
 
@@ -315,7 +316,9 @@ function useRequest<T = any>(
 		isFinished.value = false
 		isFetching.value = true
 
-		let [err, res] = await to(axiosSeries(config))
+		let [err, res] = (await to(axiosSeries(config))) as
+			| [AxiosError<unknown, any>, undefined]
+			| [null, AxiosResponse<any, any>]
 
 		if (res) {
 			response.value = res
@@ -392,7 +395,7 @@ function useRequest<T = any>(
 	function waitUntilFinished() {
 		return new Promise<UseRequestReturn<T>>((resolve, reject) => {
 			until(isFinished)
-				.toBe(true, { timeout1: 2000, throwOnTimeout1: false })
+				.toBe(true)
 				.then(() => resolve(shell))
 				.catch((error: any) => reject(error))
 		})

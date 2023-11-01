@@ -1,7 +1,7 @@
 {
 	"name": "@uni-use/until",
 	"description": "Promised one-time watch for changes",
-	"version": "1.5.0",
+	"version": "1.5.1",
 	"packageManager": "pnpm@8.7.6",
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.esm-bundler.js",
@@ -29,14 +29,14 @@
 	"dependencies": {
 		"@uni-use/mounted": "workspace:*",
 		"@uni-use/shared": "workspace:*",
-		"js-cool": "^5.11.0",
+		"js-cool": "^5.14.0",
 		"tslib": "^2.6.2",
 		"vue-demi": "^0.14.6"
 	},
 	"devDependencies": {
-		"@microsoft/api-extractor": "^7.38.0",
-		"vue": "^3.3.4",
-		"vue2": "npm:vue@^2.7.14"
+		"@microsoft/api-extractor": "^7.38.1",
+		"vue": "^3.3.7",
+		"vue2": "npm:vue@^2.7.15"
 	},
 	"peerDependencies": {
 		"@vue/composition-api": ">=1.0.0",
