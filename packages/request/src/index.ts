@@ -1,7 +1,7 @@
 // import { isRef, ref } from 'vue-demi'
 import axios from 'axios'
 import wrapper from 'axios-series'
-import until from '@uni-use/until'
+import until from 'use-until'
 import type { ComputedRef, Ref } from 'vue-demi'
 import type {
 	AxiosError,

@@ -1,6 +1,6 @@
 <div style="text-align: center;" align="center">
 
-# @uni-use/until
+# use-until
 
 Promised one-time watch for changes
 
@@ -23,13 +23,13 @@ Promised one-time watch for changes
 
 ```bash
 # use pnpm
-$ pnpm install @uni-use/until
+$ pnpm install use-until
 
 # use npm
-$ npm install @uni-use/until --save
+$ npm install use-until --save
 
 # use yarn
-$ yarn add @uni-use/until
+$ yarn add use-until
 ```
 
 ## Usage
@@ -38,7 +38,7 @@ $ yarn add @uni-use/until
 
 ```ts
 import { ref } from 'vue'
-import until from '@uni-use/until'
+import until from 'use-until'
 
 const val = ref(1)
 
@@ -55,7 +55,7 @@ setTimeout(() => {
 
 ```ts
 import { ref } from 'vue'
-import until from '@uni-use/until'
+import until from 'use-until'
 
 const val = ref(1)
 
@@ -72,7 +72,7 @@ setTimeout(() => {
 
 ```ts
 import { ref } from 'vue'
-import until from '@uni-use/until'
+import until from 'use-until'
 
 const val = ref(1)
 
@@ -89,7 +89,7 @@ setTimeout(() => {
 
 ```ts
 import { ref } from 'vue'
-import until from '@uni-use/until'
+import until from 'use-until'
 
 const val = ref(1)
 
@@ -113,7 +113,7 @@ setTimeout(() => {
 
 ```html
 <script src="https://unpkg.com/vue-demi@latest/lib/index.iife.js"></script>
-<script src="https://unpkg.com/@uni-use/until@latest/dist/index.global.prod.js"></script>
+<script src="https://unpkg.com/use-until@latest/dist/index.global.prod.js"></script>
 <script>
   await useUntil(val).toBe(true)
   // ...
@@ -128,16 +128,16 @@ Please open an issue [here](https://github.com/saqqdy/uni-use/issues).
 
 [MIT](LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/@uni-use/until.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/@uni-use/until
+[npm-image]: https://img.shields.io/npm/v/use-until.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/use-until
 [codacy-image]: https://app.codacy.com/project/badge/Grade/f70d4880e4ad4f40aa970eb9ee9d0696
-[codacy-url]: https://www.codacy.com/gh/saqqdy/@uni-use/until/dashboard?utm_source=github.com&utm_medium=referral&utm_content=saqqdy/@uni-use/until&utm_campaign=Badge_Grade
-[codecov-image]: https://img.shields.io/codecov/c/github/saqqdy/@uni-use/until.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/saqqdy/@uni-use/until?branch=master
-[download-image]: https://img.shields.io/npm/dm/@uni-use/until.svg?style=flat-square
-[download-url]: https://npmjs.org/package/@uni-use/until
-[gzip-image]: http://img.badgesize.io/https://unpkg.com/@uni-use/until/dist/index.global.prod.js?compression=gzip&label=gzip%20size:%20JS
-[gzip-url]: http://img.badgesize.io/https://unpkg.com/@uni-use/until/dist/index.global.prod.js?compression=gzip&label=gzip%20size:%20JS
+[codacy-url]: https://www.codacy.com/gh/saqqdy/use-until/dashboard?utm_source=github.com&utm_medium=referral&utm_content=saqqdy/use-until&utm_campaign=Badge_Grade
+[codecov-image]: https://img.shields.io/codecov/c/github/saqqdy/use-until.svg?style=flat-square
+[codecov-url]: https://codecov.io/github/saqqdy/use-until?branch=master
+[download-image]: https://img.shields.io/npm/dm/use-until.svg?style=flat-square
+[download-url]: https://npmjs.org/package/use-until
+[gzip-image]: http://img.badgesize.io/https://unpkg.com/use-until/dist/index.global.prod.js?compression=gzip&label=gzip%20size:%20JS
+[gzip-url]: http://img.badgesize.io/https://unpkg.com/use-until/dist/index.global.prod.js?compression=gzip&label=gzip%20size:%20JS
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
 [sonar-image]: https://sonarcloud.io/api/project_badges/quality_gate?project=saqqdy_uni-use

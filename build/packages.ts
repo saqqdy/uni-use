@@ -21,7 +21,7 @@ export const packages: PackageManifest[] = [
 	},
 	{
 		name: 'utils.until',
-		pkgName: '@uni-use/until',
+		pkgName: 'use-until',
 		iifeName: 'useUntil',
 		display: 'Promised one-time watch for changes'
 	},

@@ -221,9 +221,6 @@ importers:
       '@uni-use/shared':
         specifier: workspace:*
         version: link:../utils/shared
-      '@uni-use/until':
-        specifier: workspace:*
-        version: link:../utils/until
       '@vue/composition-api':
         specifier: '>=1.0.0'
         version: 1.0.0(vue@3.3.7)
@@ -242,6 +239,9 @@ importers:
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
+      use-until:
+        specifier: workspace:*
+        version: link:../utils/until
       vue-demi:
         specifier: ^0.14.6
         version: 0.14.6(@vue/composition-api@1.0.0)(vue@3.3.7)

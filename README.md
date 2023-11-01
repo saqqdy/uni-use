@@ -22,7 +22,7 @@ Collection of common composition apis for vue2 & vue3
 - (Developing...) A composition api for css throttle, supports vue2.0 and vue3.0: [use-css-throttle](https://github.com/saqqdy/uni-use/tree/master/packages/css-throttle)
 - Mounted state in ref: [@uni-use/mounted](https://github.com/saqqdy/uni-use/tree/master/packages/utils/mounted)
 - SSR compatibility isSupported: [@uni-use/supported](https://github.com/saqqdy/uni-use/tree/master/packages/utils/supported)
-- Promised one-time watch for changes: [@uni-use/until](https://github.com/saqqdy/uni-use/tree/master/packages/utils/until)
+- Promised one-time watch for changes: [use-until](https://github.com/saqqdy/uni-use/tree/master/packages/utils/until)
 - Collection of shared Utilities: [@uni-use/shared](https://github.com/saqqdy/uni-use/tree/master/packages/utils/shared)
 
 ## Install

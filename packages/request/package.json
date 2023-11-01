@@ -28,12 +28,12 @@
 	],
 	"dependencies": {
 		"@uni-use/shared": "workspace:*",
-		"@uni-use/until": "workspace:*",
 		"@vue/reactivity": "^3.3.7",
 		"axios": "^1.6.0",
 		"axios-series": "^1.2.0",
 		"js-cool": "^5.14.0",
 		"tslib": "^2.6.2",
+		"use-until": "workspace:*",
 		"vue-demi": "^0.14.6"
 	},
 	"devDependencies": {
