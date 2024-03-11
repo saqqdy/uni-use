@@ -215,7 +215,14 @@ function createEntry(config: Config) {
 	}
 
 	if (!isGlobalBuild) {
-		_config.external.push('core-js', 'js-cool', 'axios-series', 'tslib', ...packageNames)
+		_config.external.push(
+			'core-js',
+			'js-cool',
+			'await-to-done',
+			'axios-series',
+			'tslib',
+			...packageNames
+		)
 		if (config.external) _config.external = _config.external.concat(config.external)
 	} else if (config.externalUmd) {
 		_config.external = _config.external.concat(config.externalUmd)

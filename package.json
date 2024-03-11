@@ -14,7 +14,7 @@
 		"docs": "sh scripts/docs.sh --docs",
 		"push": "tscjs scripts/push",
 		"build": "tscjs scripts/build",
-		"build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=10240\" rollup -c build/rollup.config.ts --configPlugin @rollup/plugin-typescript",
+		"build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=12288\" rollup -c build/rollup.config.ts --configPlugin @rollup/plugin-typescript",
 		"build:es5": "cross-env BABEL_ENV=es5 pnpm run build:rollup",
 		"watch": "tscjs scripts/build --watch",
 		"pub": "tscjs scripts/publish",

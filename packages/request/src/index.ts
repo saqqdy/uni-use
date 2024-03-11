@@ -12,7 +12,7 @@ import type {
 	InternalAxiosRequestConfig
 } from 'axios'
 import { ref, shallowRef } from 'vue-demi'
-import { awaitTo as to } from 'js-cool'
+import to from 'await-to-done'
 
 /**
  * Void function
@@ -410,5 +410,20 @@ function useRequest<T = any>(
 		}
 	}
 }
+
+// function createRequest(options: UseRequestConfig) {
+// 	const { unique, orderly, onCancel } = options
+// 	const instance = axios.create()
+// 	const axiosSeries = wrapper(instance, {
+// 		unique,
+// 		orderly,
+// 		onCancel
+// 	})
+
+// 	return {
+// 		instance,
+// 		axiosSeries
+// 	}
+// }
 
 export default useRequest
