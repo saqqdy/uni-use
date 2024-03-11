@@ -1,7 +1,7 @@
 {
 	"name": "@uni-use/request",
 	"description": "An easy to use axios based http client combinatorial api with support for return sequentially",
-	"version": "1.6.0-beta.3",
+	"version": "1.5.1",
 	"packageManager": "pnpm@8.7.6",
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.esm-bundler.js",
@@ -28,18 +28,18 @@
 	],
 	"dependencies": {
 		"@uni-use/shared": "workspace:*",
-		"@vue/reactivity": "^3.3.7",
-		"await-to-done": "^1.0.1",
-		"axios": "^1.6.0",
+		"@vue/reactivity": "^3.4.21",
+		"await-to-done": "^1.0.2",
+		"axios": "^1.6.7",
 		"axios-series": "^1.2.0",
-		"js-cool": "^5.14.0",
+		"js-cool": "^5.18.0",
 		"tslib": "^2.6.2",
 		"use-until": "workspace:*",
-		"vue-demi": "^0.14.6"
+		"vue-demi": "^0.14.7"
 	},
 	"devDependencies": {
-		"@microsoft/api-extractor": "^7.38.1",
-		"vue": "^3.3.7",
+		"@microsoft/api-extractor": "^7.42.3",
+		"vue": "^3.4.21",
 		"vue2": "npm:vue@^2.7.15"
 	},
 	"peerDependencies": {
